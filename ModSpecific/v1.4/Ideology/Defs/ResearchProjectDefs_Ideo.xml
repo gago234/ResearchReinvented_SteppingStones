@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+  
+  <ResearchProjectDef>
+    <defName>RR_ReligiousThinking</defName>
+    <label>religious thinking</label>
+    <description>Words alone are not enough. Our beliefs must be represented in the word around us. Let us shape it in the image of our glorious message!</description>
+    <baseCost>100</baseCost>
+    <techLevel>Neolithic</techLevel>
+	<tags>
+	  <li>TribalStart</li>
+      <li>ClassicStart</li>
+    </tags>
+	<prerequisites>
+	  <li>RR_Art</li>
+    </prerequisites>
+	  <researchViewX>1.00</researchViewX>
+	  <researchViewY>5.35</researchViewY>
+  </ResearchProjectDef>
+
+</Defs>

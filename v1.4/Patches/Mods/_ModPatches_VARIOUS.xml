@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+
+
+	<Operation Class="PatchOperationFindMod">
+		<mods>
+			<li>Expanded Prosthetics and Organ Engineering - Forked</li>
+		</mods>
+		<match Class="RR.PatchOperationAddOrReplace">
+			<xpath>/Defs/ResearchProjectDef[defName = "BasicProsthetics"]</xpath>
+			<value>
+				<prerequisites>
+					<li>RR_Crafting</li>
+				</prerequisites>
+			</value>
+		</match>
+	</Operation>
+
+	<Operation Class="PatchOperationFindMod">
+			<mods>
+				<li>[JPT] Open The Windows</li>
+			</mods>
+			<match Class="RR.PatchOperationAddOrReplace">
+				<xpath>/Defs/ResearchProjectDef[defName = "Glassworks" or defName = "GlassworksResearch"]</xpath>
+				<value>
+					<prerequisites>
+						<li>Smithing</li>
+					</prerequisites>
+				</value>
+			</match>
+	</Operation>
+
+	<Operation Class="PatchOperationFindMod">
+			<mods>
+				<li>[JPT] Soft Warm Beds</li>
+			</mods>
+			<match Class="RR.PatchOperationAddOrReplace">
+					<xpath>/Defs/ThingDef[defName = "Rede"]</xpath>
+					<value>
+						<researchPrerequisites>
+                            <li>RR_Bedrolls</li>
+                        </researchPrerequisites>
+					</value>
+			</match>		
+	</Operation>
+	
+	 <Operation Class="PatchOperationFindMod">
+        <mods>
+            <li>Argón's Tribal Medicine</li>
+        </mods>
+			<match Class="PatchOperationSequence">
+			<operations>
+				<li Class="RR.PatchOperationAddOrReplace">
+					<xpath>/Defs/ResearchProjectDef[defName = "TM_TribalMedicalHerbs"]</xpath>
+					<value>
+						<prerequisites>
+							<li>RR_DomHerb</li>
+						</prerequisites>
+					</value>
+				</li>
+				<li Class="PatchOperationReplace">
+					<xpath>/Defs/ResearchProjectDef[defName = "TM_TribalMedicalHerbs"]/baseCost</xpath>
+					<value>
+						<baseCost>500</baseCost>
+					</value>
+				</li>
+			</operations>
+        </match>
+    </Operation>
+	
+	<Operation Class="PatchOperationFindMod">
+		<mods>
+			<li>Barely Better Spots</li>
+		</mods>
+		<match Class="PatchOperationSequence">
+			<operations>
+				<li Class="RR.PatchOperationAddOrReplace">
+					<xpath>Defs/ThingDef[defName="RR_ThinkingSpot"]</xpath>
+					<value>
+						<clearBuildingArea>false</clearBuildingArea>
+						<altitudeLayer>BuildingOnTop</altitudeLayer>
+						<building>
+							<isEdifice>false</isEdifice>
+						</building>
+					</value>
+				</li>
+				<li Class="RR.PatchOperationAddOrReplace">
+					<xpath>Defs/ThingDef[defName="RR_ThinkingSpot"]/comps</xpath>
+					<value>
+						<li Class="VanillaFurnitureExpanded.CompProperties_RandomBuildingGraphic">
+							<randomGraphics>
+								<li>Things/Building/Production/ThinkingSpot</li>
+								<li>Things/Building/Misc/Owl_BarelyVisibleSpot</li>
+							</randomGraphics>
+						</li>
+					</value>
+				</li>
+			</operations>
+		</match>
+	</Operation>
+	
+	<Operation Class="PatchOperationFindMod">
+        <mods>
+            <li>Animal Equipment</li>
+        </mods>
+			<match Class="PatchOperationSequence">
+			<operations>
+			
+				<li Class="RR.PatchOperationAddOrReplace">
+					<xpath>/Defs/ResearchProjectDef[defName = "AnimalRidingGear"]</xpath>
+					<value>
+						<prerequisites>
+							<li>TS_PrimitiveClothing</li>
+						</prerequisites>
+					</value>
+				</li>				
+			
+			</operations>
+        </match>
+    </Operation>
+	
+
+</Patch>

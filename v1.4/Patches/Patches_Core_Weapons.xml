@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<Patch>
+
+  <!-- Add Research -->
+  <Operation Class="RR.PatchOperationAddOrReplace">
+    <xpath>/Defs/ThingDef[defName = "MeleeWeapon_Club" or defName = "MeleeWeapon_Knife"]/recipeMaker</xpath>
+    <value>
+      <researchPrerequisite>RR_PrimitiveMeleeWeapons</researchPrerequisite>
+    </value>
+  </Operation>
+
+  <Operation Class="PatchOperationReplace">
+    <xpath>/Defs/ThingDef[defName = "MeleeWeapon_Ikwa"]/recipeMaker/researchPrerequisite</xpath>
+    <value>
+      <researchPrerequisite>RR_PrimitiveMeleeWeapons</researchPrerequisite>
+    </value>
+  </Operation>
+
+  <Operation Class="RR.PatchOperationAddOrReplace">
+    <xpath>/Defs/ThingDef[defName = "Bow_Short" or defName = "Pila"]/recipeMaker</xpath>
+    <value>
+      <researchPrerequisite>RR_PrimitiveRangedWeapons</researchPrerequisite>
+    </value>
+  </Operation>
+  
+  <!-- Add crafting spot -->
+  <Operation Class="RR.PatchOperationAddOrReplace">
+    <xpath>/Defs/ThingDef[defName = "MeleeWeapon_Ikwa" or defName = "Pila"]/recipeMaker</xpath>
+    <value>
+      <recipeUsers>
+        <li>CraftingSpot</li>
+      </recipeUsers>
+    </value>
+  </Operation>
+
+</Patch>

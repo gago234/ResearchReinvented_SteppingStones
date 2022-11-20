@@ -1,0 +1,511 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+
+	<Operation Class="PatchOperationFindMod">
+	  <mods>
+		  <li>Vanilla Furniture Expanded</li>
+	  </mods>
+	  <match Class="PatchOperationSequence">
+		<operations>
+			    <li Class="PatchOperationRemove">
+					<xpath>Defs/ResearchProjectDef[defName = "MF_BasicFurniture"]</xpath>
+			    </li>
+				<li Class="RR.PatchOperationAddOrReplace">
+					<xpath>Defs/ResearchProjectDef[defName = "ComplexFurniture"]</xpath>
+					<value>
+						<prerequisites>
+							<li>RR_MethodicalResearch</li>
+						</prerequisites>
+					</value>
+				</li>
+				
+				<li Class="PatchOperationReplace">
+					<xpath>/Defs/ThingDef[defName = "Bed_Simple"]/researchPrerequisites</xpath>
+					<value>
+						<researchPrerequisites>
+							<li>RR_BasicFurniture</li>
+						</researchPrerequisites>
+					</value>
+				</li>
+				<li Class="PatchOperationReplace">
+					<xpath>/Defs/ThingDef[defName = "Seat_Bench"]/researchPrerequisites</xpath>
+					<value>
+						<researchPrerequisites>
+							<li>RR_BasicFurniture</li>
+						</researchPrerequisites>
+					</value>
+				</li>
+				<li Class="PatchOperationReplace">
+					<xpath>/Defs/ThingDef[defName = "Table_1x1c"]/researchPrerequisites</xpath>
+					<value>
+						<researchPrerequisites>
+							<li>RR_BasicFurniture</li>
+						</researchPrerequisites>
+					</value>
+				</li>
+		</operations>
+	  </match>
+	</Operation>
+	
+	<Operation Class="PatchOperationFindMod">
+		<mods>
+			<li>Vanilla Furniture Expanded - Art</li>
+		</mods>
+		<match Class="PatchOperationSequence">
+			<operations>
+				<li Class="RR.PatchOperationAddOrReplace">
+					<xpath>/Defs/ResearchProjectDef[defName = "VFE_Res_Obelisk" or defName = "VFE_Res_Pottery" or defName = "VFE_Res_WallCarvings"]</xpath>
+					<value>
+						<prerequisites>
+							<li>RR_Art</li>
+						</prerequisites>
+					</value>
+				</li>
+                <li Class="RR.PatchOperationAddOrReplace">
+                    <xpath>/Defs/ResearchProjectDef[defName = "VFE_Res_ArtfulDisplay" or defName = "VFE_Res_Wallpapers"]</xpath>
+                    <value>
+                        <prerequisites>
+                            <li>ComplexFurniture</li>
+                        </prerequisites>
+                    </value>
+                </li>
+                <li Class="RR.PatchOperationAddOrReplace">
+                    <xpath>/Defs/ResearchProjectDef[defName = "VFE_Res_Statues"]</xpath>
+                    <value>
+                        <prerequisites>
+                            <li>VFE_Res_WallCarvings</li>
+                        </prerequisites>
+                        <requiredResearchBuilding>SimpleResearchBench</requiredResearchBuilding>
+                    </value>
+                </li>
+                <li Class="RR.PatchOperationAddOrReplace">
+                    <xpath>/Defs/ResearchProjectDef[defName = "VFE_Res_Monuments"]</xpath>
+                    <value>
+                        <prerequisites>
+                            <li>VFE_Res_Obelisk</li>
+                        </prerequisites>
+                        <requiredResearchBuilding>SimpleResearchBench</requiredResearchBuilding>
+                    </value>
+                </li>
+                <li Class="RR.PatchOperationAddOrReplace">
+                    <xpath>/Defs/ResearchProjectDef[defName = "VFE_Res_Rugs"]</xpath>
+                    <value>
+                        <prerequisites>
+                            <li>CarpetMaking</li>
+                        </prerequisites>
+                        <requiredResearchBuilding>SimpleResearchBench</requiredResearchBuilding>
+                    </value>
+                </li>
+			</operations>
+		</match>
+	</Operation>
+	
+	
+	<Operation Class="PatchOperationFindMod">
+        <mods>
+            <li>Vanilla Apparel Expanded</li>
+        </mods>
+		<match Class="PatchOperationSequence">
+        <operations>
+		
+			<li Class="PatchOperationReplace">
+				<xpath>/Defs/ResearchProjectDef[defName = "VAE_CasualWear" or defName = "VAE_WorkAttire" or defName = "VAE_SterileAttire"]/prerequisites</xpath>
+				<value>
+					 <prerequisites>
+						<li>RR_IndustrialClothing</li>
+					 </prerequisites>
+				</value>
+			</li>
+			
+			<li Class="RR.PatchOperationAddOrReplace">
+				<xpath>/Defs/ThingDef[defName = "Apparel_BasicShirt"]</xpath>
+				<value>
+					<recipeMaker>
+						<researchPrerequisite>RR_IndustrialClothing</researchPrerequisite>
+					</recipeMaker>
+				</value>
+			</li>	
+			
+			<li Class="RR.PatchOperationAddOrReplace">
+				<xpath>/Defs/ThingDef[defName = "VAE_Apparel_TribalPoncho" or defName = "VAE_Apparel_TribalKilt" or defName = "VAE_Headgear_Hood"]/recipeMaker</xpath>
+				<value>
+					<researchPrerequisite>RR_PrimitiveClothing</researchPrerequisite>
+				</value>
+			</li>
+			<li Class="RR.PatchOperationAddOrReplace">
+				<xpath>/Defs/ThingDef[defName = "VAE_Apparel_PeltCoat"]/recipeMaker</xpath>
+				<value>
+					<researchPrerequisite>RR_Tailoring</researchPrerequisite>
+				</value>
+			</li>
+				
+		</operations>
+		</match>
+    </Operation>
+		
+	<Operation Class="PatchOperationFindMod">
+			<mods>
+				<li>Vanilla Weapons Expanded</li>
+			</mods>
+			<match Class="PatchOperationSequence">
+				<operations>
+				
+					<li Class="RR.PatchOperationAddOrReplace">
+						<xpath>/Defs/ThingDef[defName = "VWE_Throwing_Rocks"]/recipeMaker</xpath>
+						<value>
+							<researchPrerequisite>RR_PrimitiveRangedWeapons</researchPrerequisite>
+						</value>
+					</li>
+					
+					<li Class="RR.PatchOperationAddOrReplace">
+						<xpath>/Defs/ThingDef[defName = "VWE_Tool_Whip"]/recipeMaker</xpath>
+						<value>
+							<researchPrerequisite>RR_PrimitiveRangedWeapons</researchPrerequisite>
+						</value>
+					</li>
+					
+				
+					<li Class="RR.PatchOperationAddOrReplace">
+						<xpath>/Defs/ThingDef[defName = "VWE_MeleeWeapon_Axe"]/recipeMaker</xpath>
+						<value>
+							<researchPrerequisite>RR_PrimitiveMeleeWeapons</researchPrerequisite>
+						</value>
+					</li>
+
+					<li Class="RR.PatchOperationAddOrReplace">
+						<xpath>/Defs/ResearchProjectDef[defName = "VWE_Gunpowder"]</xpath>
+						<value>
+							<prerequisites>
+								<li>Smithing</li>
+								<li>VWE_CompoundBow</li>
+							</prerequisites>
+						</value>
+					</li>	
+					
+				</operations>
+			</match>
+	</Operation>
+	<Operation Class="PatchOperationFindMod">
+		<success>Always</success>
+			<mods>
+				<li>Vanilla Weapons Expanded - Tribal</li>
+			</mods>
+			<match Class="PatchOperationSequence">
+				<operations>
+
+				<li Class="RR.PatchOperationAddOrReplace">
+					<xpath>/Defs/ThingDef[defName = "VWE_MeleeWeapon_HeavyClub" or defName = "VWE_MeleeWeapon_LightClub" or defName = "VWE_MeleeWeapon_TribalAxe" or defName = "VWE_MeleeWeapon_Shiv" or defName = "VWE_Sling" or defName = "VWE_Throwing_Shards"]/recipeMaker</xpath>
+					<value>
+						<researchPrerequisite>RR_PrimitiveMeleeWeapons</researchPrerequisite>
+					</value>
+				</li>
+
+				<li Class="PatchOperationReplace">
+					<xpath>/Defs/ThingDef[defName = "VWE_Weapon_FireBomb"]/recipeMaker/researchPrerequisite</xpath>
+					<value>
+						<researchPrerequisite>RR_PrimitiveRangedWeapons</researchPrerequisite>
+					</value>
+				</li>
+
+			</operations>
+		</match>
+	</Operation>
+	
+	<Operation Class="PatchOperationFindMod">
+        <mods>
+            <li>Vanilla Plants Expanded</li>
+        </mods>
+       <match Class="RR.PatchOperationAddOrReplace">
+			<xpath>/Defs/ThingDef[defName = "VCE_Grass" or defName = "VCE_TallGrass"]</xpath>
+			<value>
+				<plant>
+					<sowResearchPrerequisites>
+						<li>RR_DomHerb</li>
+					</sowResearchPrerequisites>
+				</plant>
+			</value>
+		</match>
+    </Operation>
+	
+	<Operation Class="PatchOperationFindMod">
+        <mods>
+            <li>Vanilla Plants Expanded - Succulents</li>
+        </mods>
+        <match Class="RR.PatchOperationAddOrReplace">
+            <xpath>/Defs/ResearchProjectDef[defName = "VCE_SucculentSowing"]</xpath>
+            <value>
+                <prerequisites>
+                    <li>RR_DomHerb</li>
+                </prerequisites>
+            </value>
+        </match>
+    </Operation>
+	
+	<Operation Class="PatchOperationFindMod">
+        <mods>
+            <li>Vanilla Factions Expanded - Insectoids</li>
+        </mods>
+        <match Class="RR.PatchOperationAddOrReplace">
+            <xpath>/Defs/ThingDef[defName = "VFEI_Plant_Armillarix"]/plant</xpath>
+            <value>
+                <sowResearchPrerequisites>
+                    <li>RR_DomHerb</li>
+                </sowResearchPrerequisites>
+            </value>
+        </match>
+    </Operation>
+
+
+
+	
+	<Operation Class="PatchOperationFindMod">
+		<mods>
+			<li>Vanilla Armour Expanded</li>
+		</mods>
+		<match Class="PatchOperationSequence">
+			<operations>
+				<li Class="PatchOperationReplace">
+					<xpath>/Defs/ResearchProjectDef[defName = "VAE_LeatherTanning"]/prerequisites/li[text() = "ComplexClothing"]</xpath>
+					<value>
+						<li>RR_MethodicalResearch</li>
+					</value>
+				</li>
+				<li Class="RR.PatchOperationAddOrReplace">
+					<xpath>/Defs/ResearchProjectDef[defName = "VAE_LeatherTanning"]</xpath>
+					<value>
+						<requiredResearchBuilding>SimpleResearchBench</requiredResearchBuilding>
+					</value>
+				</li>
+				<li Class="RR.PatchOperationAddOrReplace">
+					<xpath>/Defs/ThingDef[defName = "VAE_Apparel_WoodenArmor"]/recipeMaker</xpath>
+					<value>
+						<researchPrerequisite>RR_PrimitiveClothing</researchPrerequisite>
+					</value>
+				</li>
+				<li Class="RR.PatchOperationAddOrReplace">
+					<xpath>/Defs/ThingDef[defName = "VAE_Headgear_StoneWarMask"]/recipeMaker</xpath>
+					<value>
+						<researchPrerequisite>RR_PrimitiveClothing</researchPrerequisite>
+					</value>
+				</li>
+			</operations>
+		</match>
+	</Operation>
+	
+	<Operation Class="PatchOperationFindMod">
+        <mods>
+            <li>Vanilla Cooking Expanded - Sushi</li>
+        </mods>
+        <match Class="RR.PatchOperationAddOrReplace">
+            <xpath>/Defs/ResearchProjectDef[defName = "VCE_SoyFermentation"]</xpath>
+            <value>
+                <prerequisites>
+                    <li>RR_Cooking</li>
+                </prerequisites>
+            </value>
+        </match>
+    </Operation>
+		
+
+	<Operation Class="PatchOperationFindMod">
+		<mods>
+			<li>Vanilla Furniture Expanded - Farming</li>
+		</mods>
+		<match Class="PatchOperationSequence">
+			<operations>
+				<li Class="RR.PatchOperationAddOrReplace">
+					<xpath>/Defs/ResearchProjectDef[defName = "VFE_Res_FarmingTechniques"]</xpath>
+					<value>
+						<prerequisites>
+							<li>RR_Agriculture</li>
+						</prerequisites>
+                        <requiredResearchBuilding>SimpleResearchBench</requiredResearchBuilding>
+					</value>
+				</li>
+			</operations>
+		</match>
+	</Operation>
+	
+	<Operation Class="PatchOperationFindMod">
+		<mods>
+			<li>Vanilla Furniture Expanded - Architect</li>
+		</mods>
+		<match Class="PatchOperationSequence">
+			<operations>
+				<li Class="RR.PatchOperationAddOrReplace">
+					<xpath>/Defs/TerrainDef[@Name = "SteelBridgeBase"]</xpath>
+					<value>
+						 <researchPrerequisites>
+							<li>RR_Bridges</li>
+							<li>Machining</li>
+						 </researchPrerequisites>
+					</value>
+				</li>
+				
+				<li Class="PatchOperationReplace">
+					<xpath>/Defs/TerrainDef[defName = "VFEArch_ConcreteFoundation"]/researchPrerequisites</xpath>
+					<value>
+						 <researchPrerequisites>
+							<li>RR_Bridges</li>
+							<li>Machining</li>
+						 </researchPrerequisites>
+					</value>
+				</li>
+				<li Class="RR.PatchOperationAddOrReplace">
+								<xpath>/Defs/TerrainDef[@Name = "CobblestoneBase"]</xpath>
+								<value>
+									 <researchPrerequisites><li>RR_Roads</li></researchPrerequisites>
+								</value>
+				</li>
+			</operations>
+		</match>
+	</Operation>
+	
+	<Operation Class="PatchOperationFindMod">
+		<mods>
+			<li>Vanilla Furniture Expanded - Security</li>
+		</mods>
+		<match Class="PatchOperationSequence">
+			<operations>
+				<li Class="RR.PatchOperationAddOrReplace">
+					<xpath>/Defs/ThingDef[defName = "VFES_CavalrySpikes"]</xpath>
+					<value>
+						<researchPrerequisites>
+							<li>RR_BasicTraps</li>
+						</researchPrerequisites>
+					</value>
+				</li>
+			</operations>
+		</match>
+	</Operation>
+
+	
+	
+	<!-- Factions -->
+		
+	<Operation Class="PatchOperationFindMod">
+        <mods>
+            <li>Vanilla Factions Expanded - Medieval</li>
+        </mods>
+		<match Class="PatchOperationSequence">
+			<operations>
+			<li Class="PatchOperationAdd">
+				<xpath>/Defs/ResearchProjectDef[defName = "RR_Doors" or defName = "RR_Cooking" or defName = "RR_Bridges" or defName = "RR_Butchering" or defName = "RR_BasicCover" or defName = "RR_Art"]/tags</xpath>
+				<value>
+						<li>VFEM_MedievalStart</li>
+				</value>
+			</li>
+			<li Class="RR.PatchOperationAddOrReplace">
+				<xpath>/Defs/ThingDef[defName = "VFEM_ArcheryTarget"]</xpath>
+				<value>
+					 <researchPrerequisites>
+						<li>RR_BoardGames</li>
+					</researchPrerequisites>
+				</value>
+			</li>
+			<li Class="RR.PatchOperationAddOrReplace">
+				<xpath>/Defs/RecipeDef[defName = "VFEM_Make_Candle"]</xpath>
+				<value>
+					 <researchPrerequisite>RR_Butchering</researchPrerequisite>
+				</value>
+			</li>
+		</operations>
+		</match>
+    </Operation>
+	
+
+
+  <Operation Class="PatchOperationFindMod">
+		<mods>
+			<li>Vanilla Factions Expanded - Vikings</li>
+		</mods>
+		<match Class="PatchOperationSequence">
+			<operations>
+			
+				<li Class="RR.PatchOperationAddOrReplace">
+					<xpath>/Defs/ResearchProjectDef[defName = "VFEV_Beekeeping"]</xpath>
+					<value>
+						<prerequisites>
+							<li>RR_MethodicalResearch</li>
+						</prerequisites>
+					</value>
+				</li>
+				
+				<li Class="RR.PatchOperationAddOrReplace">
+					<xpath>/Defs/ThingDef[defName = "VFEV_FurBed" or defName = "VFEV_DoubleFurBed"]</xpath>
+					<value>
+						<researchPrerequisites>
+							<li>RR_BasicFurniture</li>
+						</researchPrerequisites>
+					</value>
+				</li>
+				
+				<li Class="RR.PatchOperationAddOrReplace">
+					<xpath>/Defs/ThingDef[defName = "VFEV_FuneralPyre"]</xpath>
+					<value>
+						<researchPrerequisites>
+							<li>RR_BurialRites</li>
+						</researchPrerequisites>
+					</value>
+				</li>
+				
+				<li Class="PatchOperationReplace">
+                <xpath>/Defs/ThingDef[defName = "VFEV_TrainingDummy" or defName = "VFEV_Hnefatafl"]/researchPrerequisites</xpath>
+                <value>
+                    <researchPrerequisites>
+                        <li>RR_BoardGames</li>
+                    </researchPrerequisites>
+                </value>
+            </li>
+					
+			</operations>
+		</match>
+	</Operation>
+	
+  <Operation Class="PatchOperationFindMod">
+  	<mods>
+  		<li>Vanilla Factions Expanded - Settlers</li>
+  	</mods>
+	  <match Class="PatchOperationSequence">
+	    <operations>
+			<li Class="PatchOperationReplace">
+				<xpath>/Defs/ThingDef[defName = "Apparel_Vest" or defName = "Apparel_GreatDress" or defName = "VFES_Headgear_Bandana" or defName = "VFES_Headgear_Sombrero" or defName = "VFES_Headgear_FlatCap"]/recipeMaker/researchPrerequisite</xpath>
+				<value>
+					<researchPrerequisite>RR_IndustrialClothing</researchPrerequisite>
+				</value>
+			</li>
+			<li Class="RR.PatchOperationAddOrReplace">
+                <xpath>/Defs/ThingDef[defName = "Post"]</xpath>
+                <value>
+                    <researchPrerequisites>
+                        <li>RR_Walls</li>
+                    </researchPrerequisites>
+                </value>
+            </li>
+			<li Class="RR.PatchOperationAddOrReplace">
+                <xpath>/Defs/ThingDef[defName = "DoorSaloon"]</xpath>
+                <value>
+                    <researchPrerequisites>
+                        <li>RR_Doors</li>
+                    </researchPrerequisites>
+                </value>
+            </li>
+		</operations>
+  	</match>
+  </Operation>
+  
+  
+    <Operation Class="PatchOperationFindMod">
+  	<mods>
+  		<li>Vanilla Factions Expanded - Classical</li>
+  	</mods>
+	  <match Class="PatchOperationSequence">
+	    <operations>
+			
+		</operations>
+  	</match>
+  </Operation>
+  
+
+
+</Patch>

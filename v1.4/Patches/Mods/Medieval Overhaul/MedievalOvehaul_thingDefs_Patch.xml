@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<Patch>
+	
+	<Operation Class="PatchOperationFindMod">
+		<mods>
+			<li>Medieval Overhaul</li>
+			<li>Medieval Overhaul (No Major Changes)</li>
+		</mods>
+		<match Class="PatchOperationSequence">
+		<success>Always</success>
+			<operations>
+			
+				<li Class="RR.PatchOperationAddOrReplace">
+					<xpath>/Defs/ThingDef[defName = "DankPyon_ButchersBlock"]</xpath>
+					<value>
+						<researchPrerequisites>
+							<li>RR_Butchering</li>
+						</researchPrerequisites>
+					</value>
+				</li>
+			
+				<li Class="RR.PatchOperationAddOrReplace">
+					<xpath>Defs/ThingDef[defName = "DankPyon_Workbench"]</xpath>
+					<value>
+						<researchPrerequisites>
+						  <li>RR_Crafting</li>
+						  <li>RR_BasicFurniture</li>
+						</researchPrerequisites>
+					</value>
+				</li>
+				<li Class="RR.PatchOperationAddOrReplace">
+					<xpath>Defs/ThingDef[defName = "DankPyon_CleaningBench"]</xpath>
+					<value>
+						<researchPrerequisites>
+						  <li>RR_Crafting</li>
+						  <li>RR_BasicFurniture</li>
+						</researchPrerequisites>
+					</value>
+				</li>
+				
+				<li Class="RR.PatchOperationAddOrReplace">
+					<xpath>/Defs/ThingDef[defName = "DankPyon_DryingRack1x2c"]</xpath>
+					<value>
+						<researchPrerequisites>
+							<li>RR_Agriculture</li>
+							<li>RR_BasicFurniture</li>
+						</researchPrerequisites>
+					</value>
+				</li>
+			
+			</operations>
+		</match>
+	</Operation>
+	
+</Patch>

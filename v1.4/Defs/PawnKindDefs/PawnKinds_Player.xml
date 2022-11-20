@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+  <PawnKindDef ParentName="BasePlayerPawnKind">
+    <defName>RR_Spacefarer</defName>
+    <label>spacefarer</label>
+    <defaultFactionType>RR_SpacerSettlement</defaultFactionType>
+    <chemicalAddictionChance>0.06</chemicalAddictionChance>
+    <gearHealthRange>1~1</gearHealthRange>
+    <apparelTags>
+      <li>IndustrialBasic</li>
+      <li>IndustrialAdvanced</li>
+      <li>Spacer</li>
+    </apparelTags>
+    <apparelMoney>1500~3000</apparelMoney>
+    <apparelAllowHeadgearChance>0</apparelAllowHeadgearChance>
+    <backstoryCryptosleepCommonality>0.6</backstoryCryptosleepCommonality>
+    <techHediffsMoney>1000~1200</techHediffsMoney>
+    <techHediffsTags>
+	  <li>Simple</li>
+      <li>ImplantEmpireCommon</li>
+    </techHediffsTags>
+    <techHediffsChance>0.12</techHediffsChance>
+    <initialResistanceRange>13~21</initialResistanceRange>
+  </PawnKindDef>
+
+</Defs>

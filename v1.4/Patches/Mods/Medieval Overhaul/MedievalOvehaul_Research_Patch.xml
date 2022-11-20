@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<Patch>
+	
+	<Operation Class="PatchOperationFindMod">
+		<mods>
+			<li>Medieval Overhaul</li>
+			<li>Medieval Overhaul (No Major Changes)</li>
+		</mods>
+		<match Class="PatchOperationSequence">
+			<operations>
+			
+				<li Class="RR.PatchOperationAddOrReplace">
+					<xpath>/Defs/ThingDef[defName = "DankPyon_MedievalResearchBench"]</xpath>
+					<value>
+					  <researchPrerequisites>
+						<li>RR_MethodicalResearch</li>
+					  </researchPrerequisites>
+					</value>
+				</li>
+			
+				<li Class="RR.PatchOperationAddOrReplace">
+					<xpath>Defs/ResearchProjectDef[defName = "DankPyon_RusticFurniture"]</xpath>
+					<value>
+						<prerequisites>
+							<li>RR_MethodicalResearch</li>
+						</prerequisites>
+					</value>
+				</li>
+				
+				<li Class="RR.PatchOperationAddOrReplace">
+					<xpath>Defs/ResearchProjectDef[defName = "DankPyon_Presser"]</xpath>
+					<value>
+						<prerequisites>
+							<li>RR_Cooking</li>
+						</prerequisites>
+					</value>
+				</li>
+				
+				<li Class="RR.PatchOperationAddOrReplace">
+					<xpath>Defs/ResearchProjectDef[defName = "DankPyon_CandleMaking"]</xpath>
+					<value>
+						<prerequisites>
+							<li>RR_Butchering</li>
+						</prerequisites>
+					</value>
+				</li>
+				
+				<li Class="RR.PatchOperationAddOrReplace">
+					<xpath>Defs/ResearchProjectDef[defName = "DankPyon_LeatherTanning"]</xpath>
+					<value>
+						<prerequisites>
+							<li>RR_Butchering</li>
+							<li>RR_Tailoring</li>
+						</prerequisites>
+					</value>
+				</li>
+				
+				
+			
+				
+				<li Class="PatchOperationReplace">
+					<xpath>Defs/ThingDef[starts-with(defName,'DankPyon_')]/researchPrerequisites/li[text()="DankPyon_BasicAgriculture"]</xpath>
+					<value>
+						  <li>RR_Agriculture</li>
+					</value>
+				</li>
+				
+				<li Class="PatchOperationReplace">
+					<xpath>Defs/ThingDef[starts-with(defName,'DankPyon_')]/plant/sowResearchPrerequisites/li[text()="DankPyon_BasicAgriculture"]</xpath>
+					<value>
+						  <li>RR_Agriculture</li>
+					</value>
+				</li>
+				
+				<li Class="PatchOperationConditional">
+					<xpath>Defs/ThingDef[defName = "DankPyon_Plant_Flax"]/plant/sowResearchPrerequisites</xpath>
+					<match Class="RR.PatchOperationAddOrReplace">
+								<xpath>/Defs/ThingDef[defName = "DankPyon_Plant_Flax"]/plant/sowResearchPrerequisites</xpath>
+								<value>
+									<li>RR_Agriculture</li>
+								</value>
+					</match>
+					<nomatch Class="RR.PatchOperationAddOrReplace">
+								<xpath>/Defs/ThingDef[defName = "DankPyon_Plant_Flax"]/plant</xpath>
+								<value>
+									<sowResearchPrerequisites>
+										<li>RR_Agriculture</li>
+									</sowResearchPrerequisites>
+								</value>
+					</nomatch>
+				</li>
+				
+				<li Class="PatchOperationFindMod">
+					<mods>
+					   <li>Vanilla Plants Expanded</li>
+					</mods>
+						<match Class="PatchOperationReplace">
+							<xpath>Defs/ThingDef[starts-with(defName,'VCE_')]/plant/sowResearchPrerequisites/li[text()="DankPyon_BasicAgriculture"]</xpath>
+								<value>
+									  <li>RR_Agriculture</li>
+								</value>
+						</match>
+				</li>
+				
+			 	<li Class="PatchOperationReplace">
+					<xpath>Defs/ResearchProjectDef[defName = "DankPyon_IntermediateAgriculture"]/prerequisites</xpath>
+					<value>
+						<prerequisites>
+						  <li>RR_MethodicalResearch</li>
+						</prerequisites>
+					</value>
+				</li>
+			 	<li Class="RR.PatchOperationAddOrReplace">
+					<xpath>Defs/ResearchProjectDef[defName = "DankPyon_IntermediateAgriculture"]/prerequisites</xpath>
+					<value>
+						  <li>RR_Agriculture</li>
+					</value>
+				</li>
+				
+				<li Class="PatchOperationRemove">
+					<xpath>Defs/ResearchProjectDef[defName = "DankPyon_BasicAgriculture"]</xpath>
+				</li>
+
+
+							
+				
+				<li Class="PatchOperationReplace">
+					<xpath>Defs/RecipeDef[starts-with(defName,'DankPyon_')]/researchPrerequisites/li[text()="DankPyon_BasicCooking"]</xpath>
+					<value>
+						  <li>RR_Cooking</li>
+					</value>
+				</li>
+				
+				<li Class="PatchOperationReplace">
+					<xpath>Defs/RecipeDef[starts-with(@Name, "CookMealFine")]/researchPrerequisite</xpath>
+					<value>
+						<researchPrerequisite>RR_Cooking</researchPrerequisite>
+					</value>
+				</li>
+				
+				<li Class="PatchOperationReplace">
+					<xpath>Defs/ResearchProjectDef[starts-with(defName,'DankPyon_')]/prerequisites/li[text()="DankPyon_BasicCooking"]</xpath>
+					<value>
+						  <li>RR_Cooking</li>
+					</value>
+				</li>
+				
+				<li Class="PatchOperationFindMod">
+					<mods>
+					  <li>Vanilla Cooking Expanded</li>
+					</mods>
+						<match Class="PatchOperationConditional">
+								<xpath>Defs/RecipeDef[starts-with(defName,'VCE_')]/researchPrerequisites/li[text()="DankPyon_BasicCooking"]</xpath>
+									<match Class="PatchOperationReplace">
+									<xpath>Defs/RecipeDef[starts-with(defName,'VCE_')]/researchPrerequisites/li[text()="DankPyon_BasicCooking"]</xpath>
+										<value>
+											  <li>RR_Cooking</li>
+										</value>
+									</match>
+									<nomatch Class="RR.PatchOperationAddOrReplace">
+									<xpath>Defs/RecipeDef[starts-with(defName,'VCE_')]/researchPrerequisites</xpath>
+										<value>
+											  <li>RR_Cooking</li>
+										</value>
+									</nomatch>
+						</match>
+				</li> 
+				
+				<li Class="PatchOperationFindMod">
+					<mods>
+					  <li>Vanilla Cooking Expanded</li>
+					</mods>
+						<match Class="PatchOperationConditional">
+							<xpath>Defs/RecipeDef[starts-with(defName,'VCE_')]/researchPrerequisite[text()="DankPyon_BasicCooking"]</xpath>
+								<match Class="PatchOperationReplace">
+								<xpath>Defs/RecipeDef[starts-with(defName,'VCE_')]/researchPrerequisite[text()="DankPyon_BasicCooking"]</xpath>
+									<value>
+										  <researchPrerequisite>RR_Cooking</researchPrerequisite>
+									</value>
+								</match>
+								<nomatch Class="RR.PatchOperationAddOrReplace">
+								<xpath>Defs/RecipeDef[starts-with(defName,'VCE_')]</xpath>
+									<value>
+										  <researchPrerequisite>RR_Cooking</researchPrerequisite>
+									</value>
+								</nomatch>
+						</match>
+				</li> 
+				
+				<li Class="PatchOperationRemove">
+					<xpath>Defs/ResearchProjectDef[defName = "DankPyon_BasicCooking"]</xpath>
+				</li>	
+				
+				<li Class="PatchOperationReplace">
+					<xpath>Defs/ThingDef[starts-with(defName,'DankPyon_')]/recipeMaker/researchPrerequisite[text()="DankPyon_Tailoring"]</xpath>
+					<value>
+						  <researchPrerequisite>RR_Tailoring</researchPrerequisite>
+					</value>
+				</li>
+				<li Class="PatchOperationReplace">
+					<xpath>Defs/ResearchProjectDef[starts-with(defName,'DankPyon_')]/prerequisites/li[text()="DankPyon_Tailoring"]</xpath>
+					<value>
+						  <li>RR_Tailoring</li>
+					</value>
+				</li> 
+					
+				<li Class="PatchOperationReplace">
+					<xpath>Defs/ThingDef[defName = "Apparel_Pants"]/recipeMaker/researchPrerequisite</xpath>
+					<value>
+						  <researchPrerequisite>RR_Tailoring</researchPrerequisite>
+					</value>
+				</li>
+			
+				<li Class="PatchOperationRemove">
+					<xpath>Defs/ResearchProjectDef[defName = "DankPyon_Tailoring"]</xpath>
+				</li>
+				
+			</operations>
+		</match>
+	</Operation>
+	
+</Patch>

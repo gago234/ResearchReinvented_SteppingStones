@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+
+   <FactionDef ParentName="PlayerFactionBase">
+    <defName>RR_PlayerColonyNoTech</defName>
+    <label>New Arrivals (No starting techs)</label>
+    <description>A colony of recently-arrived off-worlders whose colonists have memories of technological marvels.</description>
+    <isPlayer>true</isPlayer>
+    <basicMemberKind>Colonist</basicMemberKind>
+    <pawnSingular>colonist</pawnSingular>
+    <pawnsPlural>colonists</pawnsPlural>
+    <techLevel>Industrial</techLevel>
+    <factionNameMaker>NamerFactionOutlander</factionNameMaker>
+    <settlementNameMaker>NamerSettlementOutlander</settlementNameMaker>
+    <allowedCultures><li>Astropolitan</li></allowedCultures>											
+    <backstoryFilters>
+      <li>
+        <categories>
+          <li>Offworld</li>
+        </categories>
+      </li>
+    </backstoryFilters>
+    <factionIconPath>World/WorldObjects/Expanding/Town</factionIconPath>								
+    <apparelStuffFilter>
+      <thingDefs>
+        <li>Synthread</li>
+      </thingDefs>
+    </apparelStuffFilter>
+  </FactionDef>
+  
+  <FactionDef ParentName="PlayerFactionBase">
+    <defName>RR_PlayerTribeNoTech</defName>
+    <label>New Tribe (No starting techs)</label>
+    <description>A small tribe whose members have memories of primitive wonders.</description>
+    <isPlayer>true</isPlayer>
+	<categoryTag>Tribal</categoryTag>								 
+    <pawnSingular>tribesman</pawnSingular>
+    <pawnsPlural>tribespeople</pawnsPlural>
+    <basicMemberKind>Tribesperson</basicMemberKind>
+    <techLevel>Neolithic</techLevel>
+	<factionNameMaker>NamerFactionTribal</factionNameMaker>
+    <settlementNameMaker>NamerSettlementTribal</settlementNameMaker>
+	<allowedCultures>
+      <li>Corunan</li>
+    </allowedCultures>
+    <disallowedMemes>
+      <li MayRequire="Ludeon.RimWorld.Ideology">Transhumanist</li>
+    </disallowedMemes>
+	 <backstoryFilters>
+      <li>
+        <categories>
+          <li>Tribal</li>
+        </categories>
+      </li>
+    </backstoryFilters>			   
+    <factionIconPath>World/WorldObjects/Expanding/Village</factionIconPath>
+    <settlementTexturePath>World/WorldObjects/TribalSettlement</settlementTexturePath>
+    <forageabilityFactor>1.7</forageabilityFactor>			 
+    <apparelStuffFilter>
+      <thingDefs>
+        <li>Cloth</li>
+      </thingDefs>
+    </apparelStuffFilter>
+    <recipePrerequisiteTags>
+      <li>Tribal</li>
+    </recipePrerequisiteTags>
+    </FactionDef> 
+  
+  <FactionDef ParentName="PlayerFactionBase">
+    <defName>RR_SpacerSettlement</defName>
+    <label>New Spacefarer Outpost</label>
+    <description>A small community of spacefarers coming from the stars to explore the galaxy.</description>
+    <isPlayer>true</isPlayer>
+    <basicMemberKind>RR_Spacefarer</basicMemberKind>
+    <pawnSingular>Spacefarer</pawnSingular>
+    <pawnsPlural>spacefarers</pawnsPlural>
+    <techLevel>Spacer</techLevel>
+    <factionNameMaker>NamerFactionOutlander</factionNameMaker>
+    <settlementNameMaker>NamerSettlementOutlander</settlementNameMaker>
+	<allowedCultures>
+		<li>Astropolitan</li>
+	</allowedCultures>
+	<disallowedPrecepts>
+      <li MayRequire="Ludeon.RimWorld.Ideology">Nudity_Male_CoveringAnythingButGroinDisapproved</li>
+      <li MayRequire="Ludeon.RimWorld.Ideology">Nudity_Female_CoveringAnythingButGroinDisapproved</li>
+    </disallowedPrecepts>
+    <backstoryFilters>
+      <li>
+        <categories>
+          <li>Offworld</li>
+        </categories>
+      </li>
+    </backstoryFilters>
+    <factionIconPath>World/WorldObjects/Expanding/RR_Outpost</factionIconPath>
+    <settlementTexturePath>World/WorldObjects/DefaultSettlement</settlementTexturePath>
+	<apparelStuffFilter>
+      <thingDefs>
+        <li>Synthread</li>
+        <li>Hyperweave</li>
+      </thingDefs>
+    </apparelStuffFilter>
+    <startingResearchTags>
+      <li>ClassicStart</li>
+      <li>SpacerStart</li>
+    </startingResearchTags>
+    <startingTechprintsResearchTags>
+      <li>ClassicStart</li>
+      <li>ClassicStartTechprints</li>
+    </startingTechprintsResearchTags>
+  </FactionDef>
+
+  
+</Defs>

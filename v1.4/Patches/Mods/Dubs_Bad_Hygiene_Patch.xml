@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<Patch>
+	
+	<Operation Class="PatchOperationFindMod">
+		<mods>
+			<li>Dubs Bad Hygiene</li>
+		</mods>
+		<match Class="PatchOperationSequence">
+			<operations>
+				
+				<li Class="RR.PatchOperationAddOrReplace">
+					<xpath>/Defs/ThingDef[defName = "ToiletStallDoor"]</xpath>
+					<value>
+						<researchPrerequisites>
+                            <li>RR_Doors</li>
+                        </researchPrerequisites>
+					</value>
+				</li>
+				
+				<li Class="RR.PatchOperationAddOrReplace">
+					<xpath>/Defs/ThingDef[defName = "BurnPit"]</xpath>
+					<value>
+						<researchPrerequisites>
+                            <li>RR_Firemaking</li>
+                        </researchPrerequisites>
+					</value>
+				</li>
+				
+				<li Class="RR.PatchOperationAddOrReplace">
+					<xpath>/Defs/ThingDef[defName = "PitLatrine" or defName = "PrimitiveWell" or defName = "WashBucket"]</xpath>
+					<value>
+						<researchPrerequisites>
+                            <li>RR_BasicFurniture</li>
+                        </researchPrerequisites>
+					</value>
+				</li>	
+
+				<li Class="RR.PatchOperationAddOrReplace">
+					<xpath>/Defs/ResearchProjectDef[defName = "SewageSludgeComposting" or defName = "Plumbing" or defName = "LogBoilers"]</xpath>
+					<value>
+						<prerequisites>
+							<li>RR_BasicFurniture</li>
+						</prerequisites>
+					</value>
+				</li>	
+
+			</operations>
+		</match>
+	</Operation>
+	
+</Patch>

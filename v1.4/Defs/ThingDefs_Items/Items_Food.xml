@@ -1,0 +1,256 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+
+<ThingDef ParentName="MealCooked">
+    <defName>RR_RoastedMeat</defName>
+    <label>roasted meat</label>
+    <description>A very simple meal, made by roasting meat over a campfire. Less nutrious then a simple meal.</description>
+    <graphicData>
+     <texPath>Meals/RoastedMeat</texPath>
+      <graphicClass>Graphic_StackCount</graphicClass>
+    </graphicData>
+    <statBases>
+	  <MarketValue>8</MarketValue>
+	  <Mass>0.072</Mass>
+      <WorkToMake>175</WorkToMake>
+      <Nutrition>0.20</Nutrition>
+    </statBases>
+	<stackLimit>20</stackLimit>
+	<ingestible>
+		<foodType>Meal</foodType>
+		<preferability>MealSimple</preferability>
+		<ingestEffect>EatMeat</ingestEffect>
+		<ingestSound>Meal_Eat</ingestSound>
+		<maxNumToIngestAtOnce>5</maxNumToIngestAtOnce>
+	</ingestible>
+	<tradeability>Buyable</tradeability>
+  </ThingDef>
+  
+<RecipeDef>
+	<defName>RR_CookMealRoastedMeat</defName>
+	<label>roast meat</label>
+	<description>Roast meat at campfire.</description>
+	<jobString>Roasting meat.</jobString>
+	<workAmount>180</workAmount>
+	<workSpeedStat>CookSpeed</workSpeedStat>
+	<requiredGiverWorkType>Cooking</requiredGiverWorkType>
+	<effectWorking>Cook</effectWorking>
+	<soundWorking>Recipe_CookMeal</soundWorking>
+	<allowMixingIngredients>true</allowMixingIngredients>
+	<ingredientValueGetterClass>IngredientValueGetter_Nutrition</ingredientValueGetterClass>
+	<ingredients>
+		<li>
+			<filter>
+				<categories>
+					<li>MeatRaw</li>
+				</categories>
+			</filter>
+			<count>0.5</count>
+		</li>
+	</ingredients>
+	<products>
+		<RR_RoastedMeat>4</RR_RoastedMeat>
+	</products>
+	<fixedIngredientFilter>
+		<categories>
+			<li>MeatRaw</li>
+		</categories>
+		<specialFiltersToDisallow>
+			<li>AllowRotten</li>
+		</specialFiltersToDisallow>
+	</fixedIngredientFilter>
+	<defaultIngredientFilter>
+		<categories>
+			<li>MeatRaw</li>
+		</categories>
+		<disallowedCategories>
+			<li>EggsFertilized</li>
+		</disallowedCategories>
+		<disallowedThingDefs>
+			<li>Meat_Megaspider</li>
+			<li>InsectJelly</li>
+		</disallowedThingDefs>
+	</defaultIngredientFilter>
+	<workSkill>Cooking</workSkill>
+	<recipeUsers>
+		<li>Campfire</li>
+	</recipeUsers>
+	<researchPrerequisite>RR_PrimitiveCooking</researchPrerequisite>
+</RecipeDef>
+
+<RecipeDef>
+	<defName>RR_CookMealRoastedMeat_Bulk</defName>
+	<label>roast meat x4</label>
+	<description>Roast meat at campfire.</description>
+	<jobString>Roasting meat.</jobString>
+	<workSpeedStat>CookSpeed</workSpeedStat>
+	<workAmount>780</workAmount>
+	<requiredGiverWorkType>Cooking</requiredGiverWorkType>
+	<effectWorking>Cook</effectWorking>
+	<soundWorking>Recipe_CookMeal</soundWorking>
+	<allowMixingIngredients>true</allowMixingIngredients>
+	<ingredientValueGetterClass>IngredientValueGetter_Nutrition</ingredientValueGetterClass>
+	<ingredients>
+		<li>
+			<filter>
+				<categories>
+					<li>MeatRaw</li>
+				</categories>
+			</filter>
+			<count>2.0</count>
+		</li>
+	</ingredients>
+	<products>
+		<RR_RoastedMeat>16</RR_RoastedMeat>
+	</products>
+	<fixedIngredientFilter>
+		<categories>
+			<li>MeatRaw</li>
+		</categories>
+		<specialFiltersToDisallow>
+			<li>AllowRotten</li>
+		</specialFiltersToDisallow>
+	</fixedIngredientFilter>
+	<defaultIngredientFilter>
+		<categories>
+			<li>MeatRaw</li>
+		</categories>
+		<disallowedCategories>
+			<li>EggsFertilized</li>
+		</disallowedCategories>
+		<disallowedThingDefs>
+			<li>Meat_Megaspider</li>
+			<li>InsectJelly</li>
+		</disallowedThingDefs>
+	</defaultIngredientFilter>
+	<workSkill>Cooking</workSkill>
+	<recipeUsers>
+		<li>Campfire</li>
+	</recipeUsers>
+	<researchPrerequisite>RR_PrimitiveCooking</researchPrerequisite>
+</RecipeDef>
+
+<ThingDef ParentName="MealCooked">
+    <defName>RR_VegieMush</defName>
+    <label>Vegie mush</label>
+    <description>A very simple meal,done by putting together fruit, vegetabels and other plant matter.</description>
+    <graphicData>
+     <texPath>Meals/PlantMush</texPath>
+      <graphicClass>Graphic_StackCount</graphicClass>
+    </graphicData>
+    <statBases>
+	  <MarketValue>8</MarketValue>
+	  <Mass>0.052</Mass>
+      <WorkToMake>150</WorkToMake>
+      <Nutrition>0.10</Nutrition>
+    </statBases>
+	<stackLimit>40</stackLimit>
+	<ingestible>
+		<foodType>Meal</foodType>
+		<preferability>MealSimple</preferability>
+		<ingestEffect>EatVegetarian</ingestEffect>
+		<ingestSound>Meal_Eat</ingestSound>
+		<maxNumToIngestAtOnce>10</maxNumToIngestAtOnce>
+	</ingestible>
+	<tradeability>Buyable</tradeability>
+  </ThingDef>
+  
+<RecipeDef>
+	<defName>RR_CookMealVegieMush</defName>
+	<label>cook vegie mush</label>
+	<description>Cook vegie mush on a camp fire.</description>
+	<jobString>Cooking vegie mush.</jobString>
+	<workAmount>180</workAmount>
+	<workSpeedStat>CookSpeed</workSpeedStat>
+	<requiredGiverWorkType>Cooking</requiredGiverWorkType>
+	<effectWorking>Cook</effectWorking>
+	<soundWorking>Recipe_CookMeal</soundWorking>
+	<allowMixingIngredients>true</allowMixingIngredients>
+	<ingredientValueGetterClass>IngredientValueGetter_Nutrition</ingredientValueGetterClass>
+	<ingredients>
+		<li>
+			<filter>
+				<categories>
+					<li>PlantFoodRaw</li>
+				</categories>
+			</filter>
+			<count>0.5</count>
+		</li>
+	</ingredients>
+	<products>
+		<RR_VegieMush>8</RR_VegieMush>
+	</products>
+	<fixedIngredientFilter>
+		<categories>
+			<li>PlantFoodRaw</li>
+		</categories>
+		<specialFiltersToDisallow>
+			<li>AllowRotten</li>
+		</specialFiltersToDisallow>
+	</fixedIngredientFilter>
+	<defaultIngredientFilter>
+		<categories>
+			<li>PlantFoodRaw</li>
+		</categories>
+		<disallowedCategories>
+			<li>AnimalProductRaw</li>
+		</disallowedCategories>
+	</defaultIngredientFilter>
+	<workSkill>Cooking</workSkill>
+	<recipeUsers>
+		<li>Campfire</li>
+	</recipeUsers>
+	<researchPrerequisite>RR_PrimitiveCooking</researchPrerequisite>
+</RecipeDef>
+  
+<RecipeDef>
+	<defName>RR_CookMealVegieMush_Bulk</defName>
+	<label>cook vegie mush x4</label>
+	<description>Cook vegie mush on a camp fire.</description>
+	<jobString>Cooking vegie mush.</jobString>
+	<workAmount>780</workAmount>
+	<workSpeedStat>CookSpeed</workSpeedStat>
+	<requiredGiverWorkType>Cooking</requiredGiverWorkType>
+	<effectWorking>Cook</effectWorking>
+	<soundWorking>Recipe_CookMeal</soundWorking>
+	<allowMixingIngredients>true</allowMixingIngredients>
+	<ingredientValueGetterClass>IngredientValueGetter_Nutrition</ingredientValueGetterClass>
+	<ingredients>
+		<li>
+			<filter>
+				<categories>
+					<li>PlantFoodRaw</li>
+				</categories>
+			</filter>
+			<count>2.0</count>
+		</li>
+	</ingredients>
+	<products>
+		<RR_VegieMush>32</RR_VegieMush>
+	</products>
+	<fixedIngredientFilter>
+		<categories>
+			<li>PlantFoodRaw</li>
+		</categories>
+		<specialFiltersToDisallow>
+			<li>AllowRotten</li>
+		</specialFiltersToDisallow>
+	</fixedIngredientFilter>
+	<defaultIngredientFilter>
+		<categories>
+			<li>PlantFoodRaw</li>
+		</categories>
+		<disallowedCategories>
+			<li>AnimalProductRaw</li>
+		</disallowedCategories>
+	</defaultIngredientFilter>
+	<workSkill>Cooking</workSkill>
+	<recipeUsers>
+		<li>Campfire</li>
+	</recipeUsers>
+	<researchPrerequisite>RR_PrimitiveCooking</researchPrerequisite>
+</RecipeDef>
+
+
+  
+</Defs>

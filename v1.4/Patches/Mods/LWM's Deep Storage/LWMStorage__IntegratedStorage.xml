@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<Patch>
+
+    <Operation Class="PatchOperationFindMod">
+		<mods>
+			<li>LWM's Deep Storage</li>
+		</mods>
+			<match Class="PatchOperationFindMod">
+			<mods>
+			   <li>Integrated Deep Storage</li>
+			</mods>
+			<match Class="PatchOperationSequence">
+				  <operations>
+				  
+					<li Class="RR.PatchOperationAddOrReplace">
+							<xpath>/Defs/ResearchProjectDef[defName = "IS_NeolithicStorage"]</xpath>
+							<value>
+							   <prerequisites>
+									<li>RR_BasicFurniture</li>
+								</prerequisites>
+							</value>
+					</li>
+
+					<li Class="PatchOperationReplace">
+							<xpath>/Defs/ResearchProjectDef[defName = "IS_NeolithicStorage"]/baseCost</xpath>
+							<value>
+								<baseCost>175</baseCost>
+							</value>
+					</li>
+					
+				  </operations>
+			</match>
+			<nomatch Class="PatchOperationSequence">
+            <operations>
+			
+					<li Class="PatchOperationInsert">
+						<xpath>/Defs/ResearchProjectDef[defName = "RR_Walls"]</xpath>
+						<value>
+							<ResearchProjectDef>
+								<defName>RR_LWM_DS_Storage</defName>
+								<label>Storage</label>
+								<description>A new way to store all your stuff! At least, in concept. Your researcher doesn't quite know how to store every thing "exactly", but he's confident in getting some ideas by researching other things.</description>
+								<techLevel>Neolithic</techLevel>
+								<baseCost>300</baseCost>
+								<prerequisites>
+									<li>RR_BasicFurniture</li>
+								</prerequisites>
+							</ResearchProjectDef>
+						</value>
+					</li>
+				
+					<li Class="RR.PatchOperationAddOrReplace">
+						<xpath>/Defs/ThingDef[defName = "LWM_DeepStorage"]</xpath>
+						<value>
+							<researchPrerequisites>
+								<li>RR_LWM_DS_Storage</li>
+							</researchPrerequisites>
+						</value>
+					</li>
+					<!-- Shelves -->
+			
+					<li Class="RR.PatchOperationAddOrReplace">
+						<xpath>/Defs/ThingDef[defName = "LWM_BigShelf" or defName = "LWM_VeryBigShelf"]</xpath>
+						<value>
+							<researchPrerequisites>
+								<li>ComplexFurniture</li>
+							</researchPrerequisites>
+						</value>
+					</li>
+				
+					<li Class="RR.PatchOperationAddOrReplace">
+						<xpath>/Defs/ThingDef[defName = "Shelf"]</xpath>
+						<value>
+							<researchPrerequisites>
+								<li>RR_LWM_DS_Storage</li>
+							</researchPrerequisites>
+						</value>
+					</li>
+					<!-- Pallets -->
+				
+					<li Class="RR.PatchOperationAddOrReplace">
+						<xpath>/Defs/ThingDef[defName = "LWM_Pallet" or defName = "LWM_Pallet_Covered"]</xpath>
+						<value>
+							<researchPrerequisites>
+								<li>Stonecutting</li>
+							</researchPrerequisites>
+						</value>
+					</li>
+				 <!-- Food storage -->
+				
+					<li Class="RR.PatchOperationAddOrReplace">
+						<xpath>/Defs/ThingDef[defName = "LWM_Hayloft"]</xpath>
+						<value>
+							<researchPrerequisites>
+								<li>RR_Agriculture</li>
+							</researchPrerequisites>
+						</value>
+					</li>
+				
+					<li Class="RR.PatchOperationAddOrReplace">
+						<xpath>/Defs/ThingDef[defName = "LWM_Food_Basket"]/researchPrerequisites</xpath>
+						<value>
+								<li>RR_Agriculture</li>
+						</value>
+					</li>
+				
+				
+					<li Class="PatchOperationAttributeSet">
+						<xpath>/Defs/ThingDef[defName = "LWM_Meat_Hook"]/researchPrerequisites</xpath>
+						<attribute>Inherit</attribute>
+						<value>true</value>
+					</li>
+					
+				
+					<li Class="RR.PatchOperationAddOrReplace">
+						<xpath>/Defs/ThingDef[defName = "LWM_MealRack"]</xpath>
+						<value>
+							<researchPrerequisites>
+								<li>RR_Cooking</li>
+							</researchPrerequisites>
+						</value>
+					</li>
+					<!-- Skip -->
+		
+					<li Class="RR.PatchOperationAddOrReplace">
+						<xpath>/Defs/ThingDef[defName = "LWM_DeepStorage_Skip"]</xpath>
+						<value>
+							<researchPrerequisites>
+								<li>Smithing</li>
+							</researchPrerequisites>
+						</value>
+					</li>
+					<!-- Cloth -->
+				
+					<li Class="RR.PatchOperationAddOrReplace">
+						<xpath>/Defs/ThingDef[defName = "LWM_FabricHamper"]</xpath>
+						<value>
+							<researchPrerequisites>
+								<li>RR_Tailoring</li>
+							</researchPrerequisites>
+						</value>
+					</li>
+					<!-- Medicine -->
+				
+					<li Class="RR.PatchOperationAddOrReplace">
+						<xpath>/Defs/ThingDef[defName = "LWM_Medicine_Cabinet"]</xpath>
+						<value>
+							<researchPrerequisites>
+								<li>DrugProduction</li>
+							</researchPrerequisites>
+						</value>
+					</li>
+					<!-- Weapons -->
+				
+					<li Class="RR.PatchOperationAddOrReplace">
+						<xpath>/Defs/ThingDef[defName = "LWM_WeaponsLocker"]</xpath>
+						<value>
+							<researchPrerequisites>
+								<li>Gunsmithing</li>
+							</researchPrerequisites>
+						</value>
+					</li>
+            </operations>
+			</nomatch>
+		</match>
+    </Operation>
+
+</Patch>
