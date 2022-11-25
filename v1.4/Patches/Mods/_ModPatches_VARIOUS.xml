@@ -119,5 +119,25 @@
         </match>
     </Operation>
 	
+	<Operation Class="PatchOperationFindMod">
+        <mods>
+            <li>Beds Need Bedding</li>
+        </mods>
+			<match Class="PatchOperationSequence">
+			<operations>
+			
+				<li Class="RR.PatchOperationAddOrReplace">
+					<xpath>/Defs/ThingDef[defName = "Bedding"]</xpath>
+					<value>
+						<researchPrerequisites>
+                            <li>RR_Bedrolls</li>
+                        </researchPrerequisites>
+					</value>
+				</li>				
+			
+			</operations>
+        </match>
+    </Operation>
+	
 
 </Patch>

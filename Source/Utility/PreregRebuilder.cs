@@ -44,7 +44,7 @@ namespace PeteTimesSix.ResearchReinvented_SteppingStones.Utility
 
             var noProjectBuildableDefs = new HashSet<ThingDef>();
             var noProjectInstantBuildableDefs = new HashSet<ThingDef>();
-            var buildingoverride = new HashSet<ThingDef>();
+            var ProjectBuildableDefsOverride = new HashSet<ThingDef>();
             foreach (var thingDef in DefDatabase<ThingDef>.AllDefsListForReading.Where(t =>t.BuildableByPlayer))
             {
                 if (thingDef.IsInstantBuild())
@@ -58,7 +58,7 @@ namespace PeteTimesSix.ResearchReinvented_SteppingStones.Utility
                 }
                 else
                 {
-                    buildingoverride.Add(thingDef);
+                    ProjectBuildableDefsOverride.Add(thingDef);
                 }
             }
             var noProjectPlacableDefs = new HashSet<ThingDef>();
@@ -74,21 +74,26 @@ namespace PeteTimesSix.ResearchReinvented_SteppingStones.Utility
                 noProjectPlantDefs.Add(plantDef);
             }
             var noProjectTerrainDefs = new HashSet<TerrainDef>();
-            foreach (var terrainDef in DefDatabase<TerrainDef>.AllDefsListForReading.Where(t => (t.BuildableByPlayer &&
-            (t.researchPrerequisites == null || !t.researchPrerequisites.Any() || t.researchPrerequisites.FirstOrDefault().prerequisites == null ||
-            !t.researchPrerequisites.FirstOrDefault().prerequisites.Any()))))
+            var ProjectTerrainDefsOverride = new HashSet<TerrainDef>();
+            foreach (var terrainDef in DefDatabase<TerrainDef>.AllDefsListForReading.Where(t => (t.BuildableByPlayer)))
+            if (terrainDef.researchPrerequisites == null || !terrainDef.researchPrerequisites.Any() || 
+                 terrainDef.researchPrerequisites.FirstOrDefault().prerequisites == null || !terrainDef.researchPrerequisites.FirstOrDefault().prerequisites.Any())
             {
                 noProjectTerrainDefs.Add(terrainDef);
+            }
+            else
+            {
+                    ProjectTerrainDefsOverride.Add(terrainDef);
             }
             var noProjectResearchDefs = new HashSet<ResearchProjectDef>();
             foreach (var researchDef in DefDatabase<ResearchProjectDef>.AllDefsListForReading.Where((ResearchProjectDef r) => r != null && (r.prerequisites == null || !r.prerequisites.Any()) && (r.hiddenPrerequisites == null || !r.hiddenPrerequisites.Any())))
             {
                 noProjectResearchDefs.Add(researchDef);
             }
-            GivePrerequisitesToBuildables(noProjectBuildableDefs, buildingoverride);
+            GivePrerequisitesToBuildables(noProjectBuildableDefs, ProjectBuildableDefsOverride);
             GivePrerequisitesToPlacables(noProjectPlacableDefs);
             GivePrerequisitesToPlants(noProjectPlantDefs);
-            GivePrerequisitesToTerrain(noProjectTerrainDefs);
+            GivePrerequisitesToTerrain(noProjectTerrainDefs, ProjectTerrainDefsOverride);
             try
             {
                 GivePrerequisitesToResearch(noProjectResearchDefs);
@@ -103,7 +108,7 @@ namespace PeteTimesSix.ResearchReinvented_SteppingStones.Utility
             ThingDefOf_Custom.RR_ThinkingSpot.researchPrerequisites = null;
         }
 
-        private static void GivePrerequisitesToBuildables(HashSet<ThingDef> noProjectBuildableDefs, HashSet<ThingDef> buildingoverride)
+        private static void GivePrerequisitesToBuildables(HashSet<ThingDef> noProjectBuildableDefs, HashSet<ThingDef> ProjectBuildableDefsOverride)
         {
             foreach (var buildable in noProjectBuildableDefs)
             {
@@ -205,16 +210,16 @@ namespace PeteTimesSix.ResearchReinvented_SteppingStones.Utility
                     //buildable.researchPrerequisites.Add(ResearchProjectDefOf_Custom.RR_FundamentalConstruction);
                 }
             }
-            foreach (var buildableOverride in buildingoverride.Except(noProjectBuildableDefs).ToHashSet())
+            foreach (var overide in ProjectBuildableDefsOverride.Except(noProjectBuildableDefs).ToHashSet())
             {
-                if (buildableOverride.researchPrerequisites == null)
-                    buildableOverride.researchPrerequisites = new List<ResearchProjectDef>();
+                if (overide.researchPrerequisites == null)
+                    overide.researchPrerequisites = new List<ResearchProjectDef>();
 
-                if(buildableOverride.building.shipPart == false) 
-                    if (((buildableOverride.IsDoor && !buildableOverride.thingClass.ToString().Contains("Windows")) || buildableOverride.thingClass.ToString().Contains("Door") || buildableOverride.thingClass.ToString().Contains("Gate")) &&
-                        (buildableOverride.stuffCategories.Contains(StuffCategoryDefOf.Stony) || buildableOverride.stuffCategories.Contains(StuffCategoryDefOf.Woody) || buildableOverride.stuffCategories.Contains(StuffCategoryDefOf.Metallic)))
+                if(overide.building.shipPart == false) 
+                    if (((overide.IsDoor && !overide.thingClass.ToString().Contains("Windows")) || overide.thingClass.ToString().Contains("Door") || overide.thingClass.ToString().Contains("Gate")) &&
+                        (overide.stuffCategories.Contains(StuffCategoryDefOf.Stony) || overide.stuffCategories.Contains(StuffCategoryDefOf.Woody) || overide.stuffCategories.Contains(StuffCategoryDefOf.Metallic)))
                     {
-                        buildableOverride.researchPrerequisites.Add(ResearchProjectDefOf_Custom.RR_Doors);
+                        overide.researchPrerequisites.Add(ResearchProjectDefOf_Custom.RR_Doors);
                     }
                 
             }
@@ -248,10 +253,10 @@ namespace PeteTimesSix.ResearchReinvented_SteppingStones.Utility
 
                 if (firstProjects != null && firstProjects.Any())
                 {
-                    foreach (var r in firstProjects)
+                    /*foreach (var r in firstProjects)
                     {
                         Log.Message(r.ToString());
-                    }
+                    }*/
                     research.prerequisites.AddRange(firstProjects);
                     continue;
                 }
@@ -278,7 +283,7 @@ namespace PeteTimesSix.ResearchReinvented_SteppingStones.Utility
             }
         }
 
-        private static void GivePrerequisitesToTerrain(HashSet<TerrainDef> noProjectTerrainDefs)
+        private static void GivePrerequisitesToTerrain(HashSet<TerrainDef> noProjectTerrainDefs, HashSet<TerrainDef> ProjectTerrainDefsOverride)
         {
             foreach (var terrain in noProjectTerrainDefs)
             {
@@ -293,13 +298,45 @@ namespace PeteTimesSix.ResearchReinvented_SteppingStones.Utility
                 {
                     terrain.researchPrerequisites.Add(ResearchProjectDefOf_Custom.RR_Bridges);
                 }
-                else if (terrain.costList == null || !terrain.costList.Any() || terrain.defName.Contains("flagstone"))
+                else if (terrain.defName.Contains("Flagstone"))
                 {
                     terrain.researchPrerequisites.Add(ResearchProjectDefOf_Custom.RR_Roads);
+                }
+                else if (terrain.CostList?.FirstOrDefault()?.thingDef?.stuffProps?.categories != null  && terrain?.CostList?.FirstOrDefault(t => t.thingDef.stuffProps.categories.Contains(StuffCategoryDefOf.Stony)) != null)
+                {
+                    terrain.researchPrerequisites.Add(ResearchProjectDef.Named("Stonecutting"));
+                    terrain.researchPrerequisites.Add(ResearchProjectDefOf_Custom.RR_IndoorFlooring);             
                 }
                 else
                 {
                     terrain.researchPrerequisites.Add(ResearchProjectDefOf_Custom.RR_IndoorFlooring);
+                }
+            }
+            foreach (var terrain in ProjectTerrainDefsOverride.Except(noProjectTerrainDefs))
+            {
+                if (terrain?.tags != null && !terrain.tags.Where(t => t == "Ship" || t == "Space").Any())
+                {
+                    if (terrain.CostList?.Where(t => t.thingDef.stuffProps.categories.Contains(StuffCategoryDefOf.Stony)) != null)
+                    {                      
+                        if (!terrain.researchPrerequisites.Contains(ResearchProjectDef.Named("Stonecutting")))
+                            terrain.researchPrerequisites.Add(ResearchProjectDef.Named("Stonecutting"));
+                        terrain.researchPrerequisites.Add(ResearchProjectDefOf_Custom.RR_IndoorFlooring);
+                    }
+                    else if ( terrain?.CostList?.Where(t => t.thingDef.stuffProps.categories.Contains(StuffCategoryDefOf.Metallic)) != null && terrain.researchPrerequisites.Contains(ResearchProjectDef.Named("Stonecutting")))
+                    {                     
+                        ResearchProjectDef thing;
+                        thing = terrain.researchPrerequisites.Where(r => r.defName == "Stonecutting").First();
+                        if (thing != null)
+                        {
+                            terrain.researchPrerequisites.Replace(thing, ResearchProjectDef.Named("Electricity"));
+                        }                    
+                    }
+                    else if(terrain?.CostList?.Where(t => t.thingDef.stuffProps.categories.Contains(StuffCategoryDefOf.Metallic)) != null)
+                    {                       
+                        if (!terrain.researchPrerequisites.Contains(ResearchProjectDef.Named("Smithing")))
+                            terrain.researchPrerequisites.Add(ResearchProjectDef.Named("Smithing"));
+                        terrain.researchPrerequisites.Add(ResearchProjectDefOf_Custom.RR_IndoorFlooring);              
+                    }
                 }
             }
         }

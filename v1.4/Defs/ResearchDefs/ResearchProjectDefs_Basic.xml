@@ -134,7 +134,7 @@
     <defName>RR_MethodicalResearch</defName>
     <label>methodical research</label>
     <description>After many innovating inventions that made your group renowned throughout the region, your researcher has thought of a way to make more innovations more efficiently!</description>
-    <baseCost>750</baseCost>
+    <baseCost>500</baseCost>
     <techLevel>Medieval</techLevel>
 	<tags>
       <li>ClassicStart</li>
@@ -241,7 +241,7 @@
     <defName>RR_AdvancedCover</defName>
     <label>advanced cover</label>
     <description>Some of your men remember the barricade, a waist high wall to provide cover from stones and arrows. This is the cheaper and faster little brother, to provide you with cover from hostile (and probably friendly) gunfire: the sandbag.</description>
-    <baseCost>450</baseCost>
+    <baseCost>350</baseCost>
     <techLevel>Industrial</techLevel>
 	<tags>
       <li>ClassicStart</li>
@@ -498,7 +498,7 @@
     <defName>RR_IndustrialClothing</defName>
     <label>industrial clothing</label>
     <description>Tailor clothing typical for industrial times.</description>
-    <baseCost>750</baseCost>
+    <baseCost>500</baseCost>
     <techLevel>Industrial</techLevel>
       <researchViewX>3.00</researchViewX>
       <researchViewY>0.50</researchViewY>
