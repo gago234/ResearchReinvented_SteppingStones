@@ -11,7 +11,7 @@ Mod by PartyCowboy into it. Also added a lot of personal flavor over time. A few
 
 
 
-Original Discription:
+Original Description:
 *A companion mod for Research Reinvented that modifies the vanilla research tree to one with a more discreet, logical progression.*
 
 <br>
