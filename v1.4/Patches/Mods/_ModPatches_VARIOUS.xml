@@ -126,12 +126,10 @@
 			<match Class="PatchOperationSequence">
 			<operations>
 			
-				<li Class="RR.PatchOperationAddOrReplace">
-					<xpath>/Defs/ThingDef[defName = "Bedding"]</xpath>
+				<li Class="PatchOperationReplace">
+					<xpath>/Defs/RecipeDef[defName = "Make_Bedding"]/researchPrerequisite</xpath>
 					<value>
-						<researchPrerequisites>
-                            <li>RR_Bedrolls</li>
-                        </researchPrerequisites>
+						<researchPrerequisite>RR_PrimitiveClothing</researchPrerequisite>
 					</value>
 				</li>				
 			
