@@ -96,15 +96,22 @@ namespace PeteTimesSix.ResearchReinvented_SteppingStones.Utility
             GivePrerequisitesToTerrain(noProjectTerrainDefs, ProjectTerrainDefsOverride);
             try
             {
-                GivePrerequisitesToResearch(noProjectResearchDefs);
                 GivePrerequisitesToRecipes(noProjectRecipeDefs, noProjectSurgeryRecipeDefs, noProjectFullBodySurgeryRecipeDefs);
             }
             catch (InvalidOperationException e)
             {
-                Log.Error("error while assinging recipes or researches to projects: " + e.Message);
+                Log.Error("error while assinging recipes to projects: " + e.Message);
             }
-           
-           
+            try
+            {
+                GivePrerequisitesToResearch(noProjectResearchDefs);
+            }
+            catch (InvalidOperationException e)
+            {
+                Log.Error("error while assinging researches to projects: " + e.Message);
+            }
+
+
             ThingDefOf_Custom.RR_ThinkingSpot.researchPrerequisites = null;
         }
 
@@ -260,7 +267,14 @@ namespace PeteTimesSix.ResearchReinvented_SteppingStones.Utility
                     research.prerequisites.AddRange(firstProjects);
                     continue;
                 }
-                
+                else if (!research.prerequisites.Any())
+                {
+                    if (research.techLevel > TechLevel.Medieval)
+                        research.prerequisites.Add(ResearchProjectDef.Named("Electricity"));
+                    else if(research.techLevel > TechLevel.Neolithic)
+                        research.prerequisites.Add(ResearchProjectDefOf_Custom.RR_MethodicalResearch);
+
+                }             
             }
         }
 
@@ -298,14 +312,14 @@ namespace PeteTimesSix.ResearchReinvented_SteppingStones.Utility
                 {
                     terrain.researchPrerequisites.Add(ResearchProjectDefOf_Custom.RR_Bridges);
                 }
-                else if (terrain.defName.Contains("Flagstone"))
+                else if (terrain.defName.Contains("Flagstone") || terrain.costList == null || (terrain.costList != null && !terrain.costList.Any()))
                 {
                     terrain.researchPrerequisites.Add(ResearchProjectDefOf_Custom.RR_Roads);
                 }
                 else if (terrain.CostList?.FirstOrDefault()?.thingDef?.stuffProps?.categories != null  && terrain?.CostList?.FirstOrDefault(t => t.thingDef.stuffProps.categories.Contains(StuffCategoryDefOf.Stony)) != null)
                 {
                     terrain.researchPrerequisites.Add(ResearchProjectDef.Named("Stonecutting"));
-                    terrain.researchPrerequisites.Add(ResearchProjectDefOf_Custom.RR_IndoorFlooring);             
+                    terrain.researchPrerequisites.Add(ResearchProjectDefOf_Custom.RR_IndoorFlooring);              
                 }
                 else
                 {

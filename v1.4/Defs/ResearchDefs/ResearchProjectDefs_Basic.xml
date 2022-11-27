@@ -25,11 +25,13 @@
       <li>ClassicStart</li>
     </tags>
     <prerequisites>
-      <li>RR_MethodicalResearch</li>
+      <li>RR_Walls</li>
+	  <li>RR_BasicFurniture</li>
+	  <li>RR_Crafting</li>
     </prerequisites>
     <!-- <requiredResearchBuilding>SimpleResearchBench</requiredResearchBuilding> -->
-      <researchViewX>1.00</researchViewX>
-      <researchViewY>1.50</researchViewY>
+	<researchViewX>0.00</researchViewX>
+	<researchViewY>3.85</researchViewY>
   </ResearchProjectDef>
 
   <ResearchProjectDef>
