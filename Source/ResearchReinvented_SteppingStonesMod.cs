@@ -12,6 +12,7 @@ using PeteTimesSix.ResearchReinvented_SteppingStones.Extensions;
 using PeteTimesSix.ResearchReinvented_SteppingStones.DefOfs;
 using PeteTimesSix.ResearchReinvented_SteppingStones.Patches;
 using PeteTimesSix.ResearchReinvented_SteppingStones.Utility;
+using PeteTimesSix.ResearchReinvented_SteppingStones.PreregRebuilders;
 
 namespace PeteTimesSix.ResearchReinvented_SteppingStones
 {
@@ -39,7 +40,7 @@ namespace PeteTimesSix.ResearchReinvented_SteppingStones
     {
         static ResearchReinventedSteppingStones_PostInit() 
         {
-            PreregRebuilder.SetPrerequisitesOnOprhans();
+            PreregRebuilder.SetPrerequisitesOnOrphans();
             MainTabWindow_Research_OffsetHacks.BuildTabOffsets();
         }
     }

@@ -104,6 +104,7 @@
 	<Operation Class="RR.PatchOperationAddOrReplace">
 		<xpath>Defs/ResearchProjectDef[defName="PassiveCooler"]</xpath>
 		<value>
+			<techLevel>Neolithic</techLevel>
 			<prerequisites>
 			  <li>RR_BasicFurniture</li>
 			</prerequisites>
