@@ -15,19 +15,22 @@ namespace PeteTimesSix.ResearchReinvented_SteppingStones.PreregRebuilders
         public static void DoBuildables()
         {
             var noProjectBuildableDefs = new HashSet<ThingDef>();
-            var noProjectInstantBuildableDefs = new HashSet<ThingDef>();
-            foreach (var thingDef in DefDatabase<ThingDef>.AllDefsListForReading.Where(t =>
-                t.BuildableByPlayer &&
-                (t.researchPrerequisites == null || !t.researchPrerequisites.Any()))
-                )
+            var ProjectBuildableDefsOverride = new HashSet<ThingDef>();
+            foreach (var thingDef in DefDatabase<ThingDef>.AllDefsListForReading.Where(t => t.BuildableByPlayer))
             {
                 if (thingDef.IsInstantBuild())
                 {
-                    noProjectInstantBuildableDefs.Add(thingDef);
+                    continue;
+                }
+                else if (thingDef.researchPrerequisites == null || !thingDef.researchPrerequisites.Any() ||
+                   thingDef.researchPrerequisites?.First()?.prerequisites == null ||
+                   !thingDef.researchPrerequisites.First().prerequisites.Any())
+                {
+                    noProjectBuildableDefs.Add(thingDef);
                 }
                 else
                 {
-                    noProjectBuildableDefs.Add(thingDef);
+                    ProjectBuildableDefsOverride.Add(thingDef);
                 }
             }
 
@@ -35,6 +38,10 @@ namespace PeteTimesSix.ResearchReinvented_SteppingStones.PreregRebuilders
             {
                 try
                 {
+                    if(SkipBuildables(buildable))
+                    {
+                        continue; 
+                    }
                     GivePrerequisitesToBuildables(buildable);
                 }
                 catch (Exception e)
@@ -43,11 +50,11 @@ namespace PeteTimesSix.ResearchReinvented_SteppingStones.PreregRebuilders
                 }
             }
 
-            foreach (var buildable in noProjectInstantBuildableDefs)
+            foreach (var buildable in ProjectBuildableDefsOverride)
             {
                 try
                 {
-                    GivePrerequisitesToInstantBuildable(buildable);
+                    GiveProjectBuildableDefsOverride(buildable);
                 }
                 catch (Exception e)
                 {
@@ -56,26 +63,95 @@ namespace PeteTimesSix.ResearchReinvented_SteppingStones.PreregRebuilders
             }
         }
 
+
         private static void GivePrerequisitesToBuildables(ThingDef buildable)
         {
+          
             if (buildable.researchPrerequisites == null)
                 buildable.researchPrerequisites = new List<ResearchProjectDef>();
 
             if (buildable.IsElectrical())
+                buildable.researchPrerequisites.Add(ResearchProjectDef.Named("Electricity"));
+            else if (buildable.techLevel >= TechLevel.Medieval)
             {
-                buildable.researchPrerequisites.Add(ResearchProjectDefOf_Custom.RR_BasicCraftingFacilities);
+                buildable.researchPrerequisites.Add(ResearchProjectDefOf_Custom.RR_MethodicalResearch);
             }
             else if (buildable.IsCraftingFacility())
             {
-                buildable.researchPrerequisites.Add(ResearchProjectDefOf_Custom.RR_BasicCraftingFacilities);
+                if (buildable.IsButcherer())
+                    buildable.researchPrerequisites.Add(ResearchProjectDefOf_Custom.RR_Butchering);
+                else
+                { 
+                    buildable.researchPrerequisites.Add(ResearchProjectDefOf_Custom.RR_Crafting);
+                    if (buildable.IsMadeFromStuff())
+                        buildable.researchPrerequisites.Add(ResearchProjectDefOf_Custom.RR_BasicFurniture);
+                }
             }
-            else if (buildable.IsFurniture())
+            else if (buildable.IsIdeological())
             {
-                buildable.researchPrerequisites.Add(ResearchProjectDefOf_Custom.RR_BasicFurniture);
+                buildable.researchPrerequisites.Add(ResearchProjectDefOf_Custom.RR_ReligiousThinking);
+            }
+            else if (buildable.IsGrave())
+            {
+                buildable.researchPrerequisites.Add(ResearchProjectDefOf_Custom.RR_BurialRites);
+            }
+            else if (buildable.thingClass == typeof(Building_ResearchBench))
+            {
+                buildable.researchPrerequisites.Add(ResearchProjectDefOf_Custom.RR_MethodicalResearch);
+            }
+            else if (buildable.building.joyKind != null)
+            {
+                if (buildable.building.joyKind.defName == "Gaming_Dexterity")
+                    buildable.researchPrerequisites.Add(ResearchProjectDefOf_Custom.RR_BasicGames);
+                else
+                    buildable.researchPrerequisites.Add(ResearchProjectDefOf_Custom.RR_BoardGames);
+            }
+            else if (buildable.IsFire())
+            {
+                buildable.researchPrerequisites.Add(ResearchProjectDefOf_Custom.RR_Firemaking);
+            }
+            else if (buildable.IsDoorOrSimilar())
+            {
+                buildable.researchPrerequisites.Add(ResearchProjectDefOf_Custom.RR_Doors);
+            }
+            else if (buildable.designationCategory.defName == "Security")
+            {
+                if(buildable.IsTrap())
+                    buildable.researchPrerequisites.Add(ResearchProjectDefOf_Custom.RR_BasicTraps);
+                else
+                    if (buildable.IsSandbag())
+                         buildable.researchPrerequisites.Add(ResearchProjectDefOf_Custom.RR_AdvancedCover);
+                    else
+                         buildable.researchPrerequisites.Add(ResearchProjectDefOf_Custom.RR_BasicCover);
             }
             else if (buildable.IsStructure())
             {
-                buildable.researchPrerequisites.Add(ResearchProjectDefOf_Custom.RR_BasicStructures);
+                if(buildable.IsTentOrSimilar())
+                    buildable.researchPrerequisites.Add(ResearchProjectDefOf_Custom.RR_PrimitiveClothing);
+                else
+                    buildable.researchPrerequisites.Add(ResearchProjectDefOf_Custom.RR_Walls);
+            }
+            else if (buildable.IsFurniture())
+            {
+                if (buildable.IsStoneFurniture())
+                {
+                    buildable.researchPrerequisites.Add(ResearchProjectDef.Named("Stonecutting"));
+                    buildable.researchPrerequisites.Add(ResearchProjectDefOf_Custom.RR_BasicFurniture);
+                }
+                else if (buildable.IsFurnitureWithFabric())
+                {
+                    if (buildable.building.bed_caravansCanUse == true)
+                        buildable.researchPrerequisites.Add(ResearchProjectDefOf_Custom.RR_Bedrolls);
+                    else
+                    {
+                        buildable.researchPrerequisites.Add(ResearchProjectDefOf_Custom.RR_Tailoring);
+                        buildable.researchPrerequisites.Add(ResearchProjectDefOf_Custom.RR_BasicFurniture);
+                    }
+                }
+                else if (buildable.stuffCategories.Contains(StuffCategoryDefOf.Woody))
+                {
+                    buildable.researchPrerequisites.Add(ResearchProjectDefOf_Custom.RR_BasicFurniture);
+                }
             }
             else
             {
@@ -83,12 +159,34 @@ namespace PeteTimesSix.ResearchReinvented_SteppingStones.PreregRebuilders
             }
         }
 
-        private static void GivePrerequisitesToInstantBuildable(ThingDef buildable)
-        {
+        private static bool SkipBuildables(ThingDef buildable) 
+        {            
             if (buildable.researchPrerequisites == null)
                 buildable.researchPrerequisites = new List<ResearchProjectDef>();
 
-            buildable.researchPrerequisites.Add(ResearchProjectDefOf_Custom.RR_Organization);
+            var b = false;
+            if (buildable.building.shipPart)
+            {
+                b = true;
+            }
+            return b;
+        }
+
+        private static void GiveProjectBuildableDefsOverride(ThingDef buildableOverride)
+        {
+            if (buildableOverride.researchPrerequisites == null)
+                buildableOverride.researchPrerequisites = new List<ResearchProjectDef>();
+
+            if (buildableOverride.building.shipPart == false)
+                if (((buildableOverride.IsDoor && !buildableOverride.thingClass.ToString().Contains("Windows")) ||
+                    buildableOverride.thingClass.ToString().Contains("Door") ||
+                    buildableOverride.thingClass.ToString().Contains("Gate")) &&
+                    (buildableOverride.stuffCategories.Contains(StuffCategoryDefOf.Stony) ||
+                    buildableOverride.stuffCategories.Contains(StuffCategoryDefOf.Woody) ||
+                    buildableOverride.stuffCategories.Contains(StuffCategoryDefOf.Metallic)))
+                {
+                    buildableOverride.researchPrerequisites.Add(ResearchProjectDefOf_Custom.RR_Doors);
+                }
         }
 
     }

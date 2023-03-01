@@ -1,5 +1,6 @@
 ﻿using PeteTimesSix.ResearchReinvented_SteppingStones.DefOfs;
 using PeteTimesSix.ResearchReinvented_SteppingStones.Extensions;
+using RimWorld;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,9 +18,7 @@ namespace PeteTimesSix.ResearchReinvented_SteppingStones.PreregRebuilders
             var noProjectRecipeDefs = new HashSet<RecipeDef>();
             var noProjectSurgeryRecipeDefs = new HashSet<RecipeDef>();
             var noProjectFullBodySurgeryRecipeDefs = new HashSet<RecipeDef>();
-            foreach (var recipeDef in DefDatabase<RecipeDef>.AllDefsListForReading.Where(r =>
-                !r.AnyResearchPrerequisites())
-                )
+            foreach (var recipeDef in DefDatabase<RecipeDef>.AllDefsListForReading.Where(r => !r.NoResearchPrerequisites()))
             {
                 if (recipeDef.IsSurgery)
                 {
@@ -88,41 +87,44 @@ namespace PeteTimesSix.ResearchReinvented_SteppingStones.PreregRebuilders
                 return;
             }
 
-            if (recipe.ProducedThingDef == null)
+            //the else needs perhaps to be removed.
+            else if (recipe.ProducedThingDef != null)
             {
-                //recipe.researchPrerequisites.Add(ResearchProjectDefOf_Custom.RR_FundamentalLabor);
-            }
-            else
-            {
-                if (recipe.ProducedThingDef.IsWeapon)
+                if (recipe.ProducedThingDef.IsWeapon && recipe.ProducedThingDef.techLevel == TechLevel.Neolithic)
                 {
                     if (recipe.ProducedThingDef.IsRangedWeapon)
                     {
-                        recipe.researchPrerequisites.Add(ResearchProjectDefOf_Custom.RR_BasicRangedWeapons);
+                        recipe.researchPrerequisites.Add(ResearchProjectDefOf_Custom.RR_PrimitiveRangedWeapons);
                     }
                     else
                     {
-                        recipe.researchPrerequisites.Add(ResearchProjectDefOf_Custom.RR_BasicMeleeWeapons);
+                        recipe.researchPrerequisites.Add(ResearchProjectDefOf_Custom.RR_PrimitiveMeleeWeapons);
                     }
                 }
                 else if (recipe.ProducedThingDef.IsApparel)
                 {
-                    recipe.researchPrerequisites.Add(ResearchProjectDefOf_Custom.RR_BasicApparel);
+                    if (recipe.ProducedThingDef.techLevel <= TechLevel.Neolithic)
+                        recipe.researchPrerequisites.Add(ResearchProjectDefOf_Custom.RR_PrimitiveClothing);
+                    else
+                        recipe.researchPrerequisites.Add(ResearchProjectDefOf_Custom.RR_Tailoring);
                 }
                 else if (recipe.ProducedThingDef.IsIngestible)
                 {
                     if (recipe.ProducedThingDef.IsNutritionGivingIngestible)
                     {
-                        recipe.researchPrerequisites.Add(ResearchProjectDefOf_Custom.RR_BasicFoodPrep);
+                        if (recipe.ProducedThingDef.GetStatValueAbstract(StatDefOf.Nutrition) < 0.09f)
+                            recipe.researchPrerequisites.Add(ResearchProjectDefOf_Custom.RR_PrimitiveCooking);
+                        else
+                            recipe.researchPrerequisites.Add(ResearchProjectDefOf_Custom.RR_Cooking);
                     }
                     else
                     {
-                        recipe.researchPrerequisites.Add(ResearchProjectDefOf_Custom.RR_BasicHerbLore);
+                        recipe.researchPrerequisites.Add(ResearchProjectDefOf_Custom.RR_DomHerb);
                     }
                 }
                 else
                 {
-                    //recipe.researchPrerequisites.Add(ResearchProjectDefOf_Custom.RR_FundamentalCrafting);
+
                 }
             }
         }

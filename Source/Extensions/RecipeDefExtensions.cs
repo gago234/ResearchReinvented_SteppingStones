@@ -25,7 +25,7 @@ namespace PeteTimesSix.ResearchReinvented_SteppingStones.Extensions
 			return false;
         }
 
-        public static HashSet<ResearchProjectDef> FindEarliestPrerequisiteProjects(this RecipeDef recipe, ResearchProjectDef research)
+        public static HashSet<ResearchProjectDef> FindEarliestPrerequisiteProjects(this RecipeDef recipe)
 		{
 			var allPrereqOptions = new List<HashSet<ResearchProjectDef>>();
 			
@@ -39,30 +39,6 @@ namespace PeteTimesSix.ResearchReinvented_SteppingStones.Extensions
 						allPrereqOptions.Add(prereqs.ToHashSet());
 					}
 				}
-            }
-
-            var prereqsList = new HashSet<ResearchProjectDef>();
-            if (research != null && research.UnlockedDefs != null)
-            {
-                allPrereqOptions.Clear();
-                foreach (var def in research.UnlockedDefs)
-                {
-					ThingDef thing = def as ThingDef;
-                    var prereqs = thing?.researchPrerequisites;
-                    if (prereqs != null)
-                    {
-                        allPrereqOptions.Add(prereqs.ToHashSet());
-                    }
-
-					var prereq = thing?.recipeMaker?.researchPrerequisite;
-					if(prereq != null)
-						 prereqsList.Add(prereq);
-                    if (prereqsList != null && prereqsList.Any())
-                    {
-                        allPrereqOptions.Add(prereqsList.ToHashSet());
-						prereqsList.Clear();
-                    }
-                }
             }
 
             if (!allPrereqOptions.Any())

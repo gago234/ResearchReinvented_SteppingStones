@@ -63,6 +63,8 @@
     <Compile Include="PatchOperationAddOrReplace.cs" />
     <Compile Include="PatchOperationCompactResearchCoords.cs" />
     <Compile Include="PatchOperationReplaceResearchCoords.cs" />
+    <Compile Include="PreregRebuilders\PreregRebuilder_Research.cs" />
+    <Compile Include="PreregRebuilders\PreregRebuilder_Placeables.cs" />
     <Compile Include="PreregRebuilders\PreregRebuilder_Buildables.cs" />
     <Compile Include="PreregRebuilders\PreregRebuilder_Plants.cs" />
     <Compile Include="PreregRebuilders\PreregRebuilder_Recipes.cs" />

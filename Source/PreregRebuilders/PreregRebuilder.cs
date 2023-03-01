@@ -15,11 +15,14 @@ namespace PeteTimesSix.ResearchReinvented_SteppingStones.PreregRebuilders
     {
         public static void SetPrerequisitesOnOrphans()
         {
-            DoRecipes();
+           
             DoBuildables();
+            DoPlaceables();
             DoPlants();
             DoTerrains();
+            DoRecipes();
             DoProjects();
+            
 
             ThingDefOf_Custom.RR_ThinkingSpot.researchPrerequisites = null;
         }
@@ -31,17 +34,37 @@ namespace PeteTimesSix.ResearchReinvented_SteppingStones.PreregRebuilders
             {
                 if (_superEarlyTechs == null)
                     _superEarlyTechs = new HashSet<ResearchProjectDef>() {
-                        ResearchProjectDefOf_Custom.RR_Organization,
-                        ResearchProjectDefOf_Custom.RR_LateralThinking,
-                        ResearchProjectDefOf_Custom.RR_Agriculture,
-                        ResearchProjectDefOf_Custom.RR_BasicMeleeWeapons,
-                        ResearchProjectDefOf_Custom.RR_BasicRangedWeapons,
-                        ResearchProjectDefOf_Custom.RR_BasicApparel,
-                        ResearchProjectDefOf_Custom.RR_BasicCraftingFacilities,
-                        ResearchProjectDefOf_Custom.RR_BasicFoodPrep,
-                        ResearchProjectDefOf_Custom.RR_BasicHerbLore,
+                        ResearchProjectDefOf_Custom.RR_Walls,
+                        ResearchProjectDefOf_Custom.RR_Doors,
+                        ResearchProjectDefOf_Custom.RR_Bridges,
+                        ResearchProjectDefOf_Custom.RR_Crafting,
+                        ResearchProjectDefOf_Custom.RR_PrimitiveButchering,
+                        ResearchProjectDefOf_Custom.RR_Butchering,
+                        ResearchProjectDefOf_Custom.RR_PrimitiveCooking,
+                        ResearchProjectDefOf_Custom.RR_Cooking,
+                        ResearchProjectDefOf_Custom.RR_MethodicalResearch,
+                        ResearchProjectDefOf_Custom.RR_Tailoring,
+                        ResearchProjectDefOf_Custom.RR_Bedrolls,
                         ResearchProjectDefOf_Custom.RR_BasicFurniture,
-                        ResearchProjectDefOf_Custom.RR_BasicStructures };
+                        ResearchProjectDefOf_Custom.RR_Art,
+                        ResearchProjectDefOf_Custom.RR_BasicCover,
+                        ResearchProjectDefOf_Custom.RR_AdvancedCover,
+                        ResearchProjectDefOf_Custom.RR_BasicTraps,
+                        ResearchProjectDefOf_Custom.RR_BurialRites,
+                        ResearchProjectDefOf_Custom.RR_Roads,
+                        ResearchProjectDefOf_Custom.RR_IndoorFlooring,
+                        ResearchProjectDefOf_Custom.RR_BasicGames,
+                        ResearchProjectDefOf_Custom.RR_BoardGames,
+                        ResearchProjectDefOf_Custom.RR_Firemaking,
+                        ResearchProjectDefOf_Custom.RR_DomHerb,
+                        ResearchProjectDefOf_Custom.RR_Agriculture,
+                        ResearchProjectDefOf_Custom.RR_Smokeleaf,
+                        ResearchProjectDefOf_Custom.RR_Psychoid,
+                        ResearchProjectDefOf_Custom.RR_PrimitiveClothing,
+                        ResearchProjectDefOf_Custom.RR_PrimitiveMeleeWeapons,
+                        ResearchProjectDefOf_Custom.RR_PrimitiveRangedWeapons,
+                        ResearchProjectDefOf_Custom.RR_ReligiousThinking
+                    };
                 return _superEarlyTechs;
             }
         }
@@ -51,6 +74,12 @@ namespace PeteTimesSix.ResearchReinvented_SteppingStones.PreregRebuilders
             if (projects == null)
                 return null;
             return projects.Except(SuperEarlyTechs).ToHashSet();
+        }
+        private static HashSet<ResearchProjectDef> FilterCopy(HashSet<ResearchProjectDef> projects, ResearchProjectDef itsself)
+        {
+            if (projects == null)
+                return null;
+            return projects.Except(itsself).ToHashSet();
         }
     }
 }

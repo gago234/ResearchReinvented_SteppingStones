@@ -13,11 +13,11 @@ namespace PeteTimesSix.ResearchReinvented_SteppingStones.PreregRebuilders
         private static void DoPlants()
         {
             var noProjectPlantDefs = new HashSet<ThingDef>();
-            foreach (var plantDef in DefDatabase<ThingDef>.AllDefsListForReading.Where(t =>
-                t.plant != null &&
-                t.plant.Sowable &&
-                (t.plant.sowResearchPrerequisites == null || !t.plant.sowResearchPrerequisites.Any()))
-                )
+            foreach (var plantDef in DefDatabase<ThingDef>.AllDefsListForReading.Where(t => 
+            t.plant != null && t.plant.Sowable &&
+            (t.plant.sowResearchPrerequisites == null || !t.plant.sowResearchPrerequisites.Any() ||
+            t.plant.sowResearchPrerequisites.FirstOrDefault().prerequisites == null ||
+            !t.plant.sowResearchPrerequisites.FirstOrDefault().prerequisites.Any())))
             {
                 noProjectPlantDefs.Add(plantDef);
             }
@@ -40,7 +40,10 @@ namespace PeteTimesSix.ResearchReinvented_SteppingStones.PreregRebuilders
             if (plant.plant.sowResearchPrerequisites == null)
                 plant.plant.sowResearchPrerequisites = new List<ResearchProjectDef>();
 
-            plant.plant.sowResearchPrerequisites.Add(ResearchProjectDefOf_Custom.RR_Agriculture);
+            if (plant.plant.humanFoodPlant == true)
+                plant.plant.sowResearchPrerequisites.Add(ResearchProjectDefOf_Custom.RR_Agriculture);
+            else
+                plant.plant.sowResearchPrerequisites.Add(ResearchProjectDefOf_Custom.RR_DomHerb);
         }
     }
 }
