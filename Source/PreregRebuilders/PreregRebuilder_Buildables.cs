@@ -72,10 +72,6 @@ namespace PeteTimesSix.ResearchReinvented_SteppingStones.PreregRebuilders
 
             if (buildable.IsElectrical())
                 buildable.researchPrerequisites.Add(ResearchProjectDef.Named("Electricity"));
-            else if (buildable.techLevel >= TechLevel.Medieval)
-            {
-                buildable.researchPrerequisites.Add(ResearchProjectDefOf_Custom.RR_MethodicalResearch);
-            }
             else if (buildable.IsCraftingFacility())
             {
                 if (buildable.IsButcherer())
@@ -153,9 +149,13 @@ namespace PeteTimesSix.ResearchReinvented_SteppingStones.PreregRebuilders
                     buildable.researchPrerequisites.Add(ResearchProjectDefOf_Custom.RR_BasicFurniture);
                 }
             }
+            else if (buildable.techLevel == TechLevel.Medieval)
+            {
+               buildable.researchPrerequisites.Add(ResearchProjectDefOf_Custom.RR_MethodicalResearch);
+            }
             else
             {
-                //buildable.researchPrerequisites.Add(ResearchProjectDefOf_Custom.RR_FundamentalConstruction);
+                buildable.researchPrerequisites.Add(ResearchProjectDefOf_Custom.RR_Crafting);
             }
         }
 

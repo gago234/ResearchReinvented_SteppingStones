@@ -62,7 +62,7 @@ namespace PeteTimesSix.ResearchReinvented_SteppingStones.PreregRebuilders
                     else
                         research.prerequisites.Add(ResearchProjectDef.Named("Smithing"));
                 }
-                else if (research.techLevel >= TechLevel.Medieval)
+                else if (research.techLevel == TechLevel.Medieval)
                     research.prerequisites.Add(ResearchProjectDefOf_Custom.RR_MethodicalResearch);
 
             }

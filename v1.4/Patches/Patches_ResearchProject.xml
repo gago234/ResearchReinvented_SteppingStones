@@ -87,9 +87,7 @@
 		<xpath>Defs/ResearchProjectDef[defName="Smithing"]</xpath>
 		<value>
 			<prerequisites>
-			  <li>RR_Crafting</li>
 			  <li>RR_MethodicalResearch</li>
-			  <li>RR_PrimitiveMeleeWeapons</li>
 			  <li>RR_PrimitiveRangedWeapons</li>
 			</prerequisites>
 		</value>

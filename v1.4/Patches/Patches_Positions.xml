@@ -315,10 +315,16 @@
 		<researchViewX>10.00</researchViewX>
 		<researchViewY>3.00</researchViewY>
 	</Operation>
-	<Operation Class="RR.PatchOperationReplaceResearchCoords">
-		<xpath>Defs/ResearchProjectDef[defName="FlatscreenTelevision"]</xpath>
-		<researchViewX>11.00</researchViewX>
-		<researchViewY>2.00</researchViewY>
+	<Operation Class="PatchOperationFindMod">
+		<mods>
+			<li>Vanilla Furniture Expanded</li>
+		</mods>
+		<nomatch Class="RR.PatchOperationReplaceResearchCoords">
+			<doesRequire>rsev.vanometriccellcombining</doesRequire>
+			<xpath>Defs/ResearchProjectDef[defName="FlatscreenTelevision"]</xpath>
+			<researchViewX>4.00</researchViewX>
+			<researchViewY>5.65</researchViewY>
+		</nomatch>
 	</Operation>
 	<Operation Class="RR.PatchOperationReplaceResearchCoords">
 		<xpath>Defs/ResearchProjectDef[defName="MoisturePump"]</xpath>

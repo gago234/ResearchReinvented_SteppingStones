@@ -10,7 +10,7 @@
     <basicMemberKind>Colonist</basicMemberKind>
     <pawnSingular>colonist</pawnSingular>
     <pawnsPlural>colonists</pawnsPlural>
-    <techLevel>Industrial</techLevel>
+    <techLevel>Neolithic</techLevel>
     <factionNameMaker>NamerFactionOutlander</factionNameMaker>
     <settlementNameMaker>NamerSettlementOutlander</settlementNameMaker>
     <allowedCultures><li>Astropolitan</li></allowedCultures>											

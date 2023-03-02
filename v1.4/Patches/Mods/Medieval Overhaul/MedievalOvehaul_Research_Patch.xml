@@ -132,12 +132,12 @@
 					</value>
 				</li>
 				
-				<li Class="PatchOperationReplace">
+				<!-- <li Class="PatchOperationReplace">
 					<xpath>Defs/RecipeDef[starts-with(@Name, "CookMealFine")]/researchPrerequisite</xpath>
 					<value>
 						<researchPrerequisite>RR_Cooking</researchPrerequisite>
 					</value>
-				</li>
+				</li> -->
 				
 				<li Class="PatchOperationReplace">
 					<xpath>Defs/ResearchProjectDef[starts-with(defName,'DankPyon_')]/prerequisites/li[text()="DankPyon_BasicCooking"]</xpath>

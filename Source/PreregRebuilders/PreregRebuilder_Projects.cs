@@ -49,7 +49,7 @@ namespace PeteTimesSix.ResearchReinvented_SteppingStones.PreregRebuilders
             }
             else
             {
-                if(project.techLevel >= TechLevel.Medieval)
+                if(project.techLevel == TechLevel.Medieval)
                 {
                     project.prerequisites.Add(ResearchProjectDefOf_Custom.RR_MethodicalResearch);
                 }
@@ -68,8 +68,8 @@ namespace PeteTimesSix.ResearchReinvented_SteppingStones.PreregRebuilders
                     if (terrain.BuildableByPlayer)
                     {
                         if (terrain.costList == null || !terrain.costList.Any())
-                        {
-                            unlockPoints.AddPoint(ResearchProjectDefOf_Custom.RR_Agriculture);
+                        {                          
+                            unlockPoints.AddPoint(HasOwnResearch(def, project, ResearchProjectDefOf_Custom.RR_Agriculture));
                         }
                         else
                         {
@@ -84,23 +84,23 @@ namespace PeteTimesSix.ResearchReinvented_SteppingStones.PreregRebuilders
                         var plant = thing.plant;
                         if (plant.Sowable)
                         {
-                            unlockPoints.AddPoint(ResearchProjectDefOf_Custom.RR_Agriculture);
+                            unlockPoints.AddPoint(HasOwnResearch(def, project, ResearchProjectDefOf_Custom.RR_Agriculture));
                         }
                     }
                     else if (thing.BuildableByPlayer)
                     {
                         var buildable = thing;
-                        if (buildable.IsButcherer()) { unlockPoints.AddPoint(HasOwnResearch(buildable, project, ResearchProjectDefOf_Custom.RR_Butchering)); }
-                        if (buildable.IsDoorOrSimilar()) { unlockPoints.AddPoint(HasOwnResearch(buildable, project, ResearchProjectDefOf_Custom.RR_Doors)); }
-                        if (buildable.IsFire()) { unlockPoints.AddPoint(HasOwnResearch(buildable, project, ResearchProjectDefOf_Custom.RR_Firemaking)); }
-                        if (buildable.IsIdeological()) { unlockPoints.AddPoint(HasOwnResearch(buildable, project, ResearchProjectDefOf_Custom.RR_ReligiousThinking)); }
-                        if (buildable.IsTentOrSimilar()) { unlockPoints.AddPoint(HasOwnResearch(buildable, project, ResearchProjectDefOf_Custom.RR_Tailoring)); }
-                        if (buildable.IsGrave()) { unlockPoints.AddPoint(HasOwnResearch(buildable, project, ResearchProjectDefOf_Custom.RR_BurialRites)); }
-                        if (buildable.IsTrap()) { unlockPoints.AddPoint(HasOwnResearch(buildable, project, ResearchProjectDefOf_Custom.RR_BasicTraps)); }
-                        if (buildable.IsElectrical()) { unlockPoints.AddPoint(HasOwnResearch(buildable, project, ResearchProjectDef.Named("Electricity"))); }
-                        if (buildable.IsCraftingFacility()) { unlockPoints.AddPoint(HasOwnResearch(buildable, project, ResearchProjectDefOf_Custom.RR_Crafting)); }
-                        if (buildable.IsFurniture()) { unlockPoints.AddPoint(HasOwnResearch(buildable, project, ResearchProjectDefOf_Custom.RR_BasicFurniture)); }
-                        if (buildable.IsStructure()) { unlockPoints.AddPoint(HasOwnResearch(buildable, project, ResearchProjectDefOf_Custom.RR_Walls)); }
+                        if (buildable.IsButcherer()) { unlockPoints.AddPoint(HasOwnResearch(def, project, ResearchProjectDefOf_Custom.RR_Butchering)); }
+                        if (buildable.IsDoorOrSimilar()) { unlockPoints.AddPoint(HasOwnResearch(def, project, ResearchProjectDefOf_Custom.RR_Doors)); }
+                        if (buildable.IsFire()) { unlockPoints.AddPoint(HasOwnResearch(def, project, ResearchProjectDefOf_Custom.RR_Firemaking)); }
+                        if (buildable.IsIdeological()) { unlockPoints.AddPoint(HasOwnResearch(def, project, ResearchProjectDefOf_Custom.RR_ReligiousThinking)); }
+                        if (buildable.IsTentOrSimilar()) { unlockPoints.AddPoint(HasOwnResearch(def, project, ResearchProjectDefOf_Custom.RR_Tailoring)); }
+                        if (buildable.IsGrave()) { unlockPoints.AddPoint(HasOwnResearch(def, project, ResearchProjectDefOf_Custom.RR_BurialRites)); }
+                        if (buildable.IsTrap()) { unlockPoints.AddPoint(HasOwnResearch(def, project, ResearchProjectDefOf_Custom.RR_BasicTraps)); }
+                        if (buildable.IsElectrical()) { unlockPoints.AddPoint(HasOwnResearch(def, project, ResearchProjectDef.Named("Electricity"))); }
+                        if (buildable.IsCraftingFacility()) { unlockPoints.AddPoint(HasOwnResearch(def, project, ResearchProjectDefOf_Custom.RR_Crafting)); }
+                        if (buildable.IsFurniture()) { unlockPoints.AddPoint(HasOwnResearch(def, project, ResearchProjectDefOf_Custom.RR_BasicFurniture)); }
+                        if (buildable.IsStructure()) { unlockPoints.AddPoint(HasOwnResearch(def, project, ResearchProjectDefOf_Custom.RR_Walls)); }
                        
                         //else
                         {
@@ -109,7 +109,7 @@ namespace PeteTimesSix.ResearchReinvented_SteppingStones.PreregRebuilders
                     }
                     else
                     {
-                        AddPointsForThing(unlockPoints, thing, project);
+                        AddPointsForThing(unlockPoints, def, thing, project);
                     }
                 }
                 else if (def is RecipeDef recipe)
@@ -134,39 +134,39 @@ namespace PeteTimesSix.ResearchReinvented_SteppingStones.PreregRebuilders
                         else
                         {
                             var product = recipe.ProducedThingDef;
-                            AddPointsForThing(unlockPoints, product, project);
+                            AddPointsForThing(unlockPoints, def, product, project);
                         }
                     }
                 }
             }
         }      
 
-        private static void AddPointsForThing(Dictionary<ResearchProjectDef, int> unlockPoints, ThingDef product, ResearchProjectDef project)
+        private static void AddPointsForThing(Dictionary<ResearchProjectDef, int> unlockPoints, Def def, ThingDef product, ResearchProjectDef project)
         {
             if (product.IsWeapon)
             {
                 if (product.IsRangedWeapon)
                 {                    
-                    unlockPoints.AddPoint(HasOwnResearch(product, project, ResearchProjectDefOf_Custom.RR_PrimitiveRangedWeapons));
+                    unlockPoints.AddPoint(HasOwnResearch(def, project, ResearchProjectDefOf_Custom.RR_PrimitiveRangedWeapons));
                 }
                 else
-                {
-                   unlockPoints.AddPoint(HasOwnResearch(product, project, ResearchProjectDefOf_Custom.RR_PrimitiveMeleeWeapons));
+                { 
+                   unlockPoints.AddPoint(HasOwnResearch(def, project, ResearchProjectDefOf_Custom.RR_PrimitiveMeleeWeapons));
                 }
             }
             else if (product.IsApparel)
             {
-                unlockPoints.AddPoint(HasOwnResearch(product, project, ResearchProjectDefOf_Custom.RR_PrimitiveClothing));
+                unlockPoints.AddPoint(HasOwnResearch(def, project, ResearchProjectDefOf_Custom.RR_PrimitiveClothing));
             }
             else if (product.IsIngestible)
             {
                 if (product.IsNutritionGivingIngestible)
                 {
-                    unlockPoints.AddPoint(HasOwnResearch(product, project, ResearchProjectDefOf_Custom.RR_Cooking));                 
+                    unlockPoints.AddPoint(HasOwnResearch(def, project, ResearchProjectDefOf_Custom.RR_Cooking));                 
                 }
                 else
                 {
-                    unlockPoints.AddPoint(HasOwnResearch(product, project, ResearchProjectDefOf_Custom.RR_DomHerb));
+                    unlockPoints.AddPoint(HasOwnResearch(def, project, ResearchProjectDefOf_Custom.RR_DomHerb));
                 }
             }
             else
@@ -175,12 +175,13 @@ namespace PeteTimesSix.ResearchReinvented_SteppingStones.PreregRebuilders
             }
         }
 
-        private static ResearchProjectDef HasOwnResearch(ThingDef thing, ResearchProjectDef project, ResearchProjectDef newResearch)
+        private static ResearchProjectDef HasOwnResearch(Def def, ResearchProjectDef project, ResearchProjectDef newResearch)
         {
             var unlockPoints = new Dictionary<ResearchProjectDef, int>();
-            if (thing.researchPrerequisites != null && thing.researchPrerequisites.Except(project).Any())
+
+            if (GetResearchFromDef(def) != null && GetResearchFromDef(def).Except(project).Any())
             {
-                foreach (var research in thing.researchPrerequisites)
+                foreach (var research in GetResearchFromDef(def))
                 {
                     if (!SuperEarlyTechs.Contains(research) && research != project)
                         unlockPoints.AddPoint(research);
@@ -189,15 +190,52 @@ namespace PeteTimesSix.ResearchReinvented_SteppingStones.PreregRebuilders
                 {
                     var maxPoints = unlockPoints.Max(kv => kv.Value);
                     var newPreregs = unlockPoints.Where(kv => kv.Value == maxPoints).Select(kv => kv.Key); //in case of equal amounts
-                    newResearch = newPreregs.First();
-                    if (thing.researchPrerequisites.Contains(newResearch))
+                    if (newPreregs.Any())
+                        newResearch = newPreregs.First();
+                    else
+                        Log.Warning("New Prequesite for Research was Empty");
+                    if (GetResearchFromDef(def).Contains(newResearch))
                     {
-                        thing.researchPrerequisites.Remove(newResearch);
+                        GetResearchFromDef(def).Remove(newResearch);
                     }
                     Log.Message("New Research Found: " + newResearch);
                 }
             }
             return newResearch;
+        }
+
+        private static List<ResearchProjectDef> GetResearchFromDef( Def def )
+        {
+            List< ResearchProjectDef> research = new List<ResearchProjectDef>();
+
+            if(def is TerrainDef terrain) 
+            {
+                if (terrain.researchPrerequisites != null && terrain.researchPrerequisites.Any())
+                    research = terrain.researchPrerequisites;
+            }
+            else if (def is ThingDef thing)
+            {
+                var plant = thing.plant;
+                if (plant != null && plant.sowResearchPrerequisites != null && plant.sowResearchPrerequisites.Any())
+                {
+                    research = plant.sowResearchPrerequisites;
+                }
+                else
+                {
+                    if (thing.researchPrerequisites != null && thing.researchPrerequisites.Any())
+                         research = thing.researchPrerequisites;
+                }
+            }
+            else if (def is RecipeDef recipe)
+            {
+                if (recipe.researchPrerequisites != null && recipe.researchPrerequisites.Any())
+                    research = recipe.researchPrerequisites;
+                else if (recipe.researchPrerequisite != null)
+                {
+                    research.Add(recipe.researchPrerequisite);
+                }
+            }   
+         return research;
         }
 
         private static void AddPoint(this Dictionary<ResearchProjectDef, int> dict, ResearchProjectDef project)
