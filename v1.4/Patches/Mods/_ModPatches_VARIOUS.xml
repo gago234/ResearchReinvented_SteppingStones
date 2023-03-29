@@ -137,5 +137,16 @@
         </match>
     </Operation>
 	
+	<Operation Class="RR.PatchOperationAddOrReplace">
+		<doesRequire>jecrell.doorsexpanded</doesRequire>
+		<xpath>Defs/ResearchProjectDef[defName="ProjectHeron_Curtains"]</xpath>
+		<value>
+			 <prerequisites>
+				<li>RR_PrimitiveClothing</li>
+				<li>RR_Walls</li>
+			 </prerequisites>
+		</value>
+	</Operation>
+	
 
 </Patch>

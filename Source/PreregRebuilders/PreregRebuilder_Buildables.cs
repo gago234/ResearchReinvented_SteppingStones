@@ -177,16 +177,18 @@ namespace PeteTimesSix.ResearchReinvented_SteppingStones.PreregRebuilders
             if (buildableOverride.researchPrerequisites == null)
                 buildableOverride.researchPrerequisites = new List<ResearchProjectDef>();
 
-            if (buildableOverride.building.shipPart == false)
+            if (buildableOverride?.researchPrerequisites != null && !buildableOverride.building.shipPart)
+            {
                 if (((buildableOverride.IsDoor && !buildableOverride.thingClass.ToString().Contains("Windows")) ||
-                    buildableOverride.thingClass.ToString().Contains("Door") ||
-                    buildableOverride.thingClass.ToString().Contains("Gate")) &&
-                    (buildableOverride.stuffCategories.Contains(StuffCategoryDefOf.Stony) ||
-                    buildableOverride.stuffCategories.Contains(StuffCategoryDefOf.Woody) ||
-                    buildableOverride.stuffCategories.Contains(StuffCategoryDefOf.Metallic)))
+                  buildableOverride.thingClass.ToString().Contains("Door") ||
+                  buildableOverride.thingClass.ToString().Contains("Gate")) &&
+                  (buildableOverride.stuffCategories.Contains(StuffCategoryDefOf.Stony) ||
+                  buildableOverride.stuffCategories.Contains(StuffCategoryDefOf.Woody) ||
+                  buildableOverride.stuffCategories.Contains(StuffCategoryDefOf.Metallic)))
                 {
                     buildableOverride.researchPrerequisites.Add(ResearchProjectDefOf_Custom.RR_Doors);
                 }
+            }
         }
 
     }

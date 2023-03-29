@@ -2,7 +2,7 @@
 <Patch>
 
 	<Operation Class="PatchOperationAdd">
-		<xpath>Defs/RecipeDef[defName = "Make_BabyFood"]</xpath>
+		<xpath>Defs/RecipeDef[defName = "Make_BabyFood" or defName = "Make_BabyFoodBulk" ]</xpath>
 		<value>
 		  <researchPrerequisites>
 			<li>RR_PrimitiveCooking</li>

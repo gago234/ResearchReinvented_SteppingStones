@@ -18,7 +18,7 @@ namespace PeteTimesSix.ResearchReinvented_SteppingStones.PreregRebuilders
             var noProjectRecipeDefs = new HashSet<RecipeDef>();
             var noProjectSurgeryRecipeDefs = new HashSet<RecipeDef>();
             var noProjectFullBodySurgeryRecipeDefs = new HashSet<RecipeDef>();
-            foreach (var recipeDef in DefDatabase<RecipeDef>.AllDefsListForReading.Where(r => !r.NoResearchPrerequisites()))
+            foreach (var recipeDef in DefDatabase<RecipeDef>.AllDefsListForReading.Where(r => r.NoResearchPrerequisites()))
             {
                 if (recipeDef.IsSurgery)
                 {
