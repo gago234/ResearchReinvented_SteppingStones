@@ -1,4 +1,4 @@
-﻿using PeteTimesSix.ResearchReinvented_SteppingStones.DefOfs;
+using PeteTimesSix.ResearchReinvented_SteppingStones.DefOfs;
 using PeteTimesSix.ResearchReinvented_SteppingStones.Extensions;
 using RimWorld;
 using System;
