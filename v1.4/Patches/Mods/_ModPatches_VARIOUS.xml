@@ -137,5 +137,35 @@
         </match>
     </Operation>
 	
+	<Operation Class="RR.PatchOperationAddOrReplace">
+		<doesRequire>jecrell.doorsexpanded</doesRequire>
+		<xpath>Defs/ResearchProjectDef[defName="ProjectHeron_Curtains"]</xpath>
+		<value>
+			 <prerequisites>
+				<li>RR_PrimitiveClothing</li>
+				<li>RR_Walls</li>
+			 </prerequisites>
+		</value>
+	</Operation>
+	
+	<Operation Class="RR.PatchOperationAddOrReplace">
+		<doesRequire>argon.tribalmedicineremake</doesRequire>
+		<xpath>Defs/ResearchProjectDef[defName="TM_AncientTribalMedicine"]</xpath>
+		<value>
+			  <baseCost>500</baseCost>
+		</value>
+	</Operation>
+	
+	<Operation Class="RR.PatchOperationAddOrReplace">
+		<doesRequire>argon.tribalmedicineremake</doesRequire>
+		<xpath>Defs/ResearchProjectDef[defName="TM_AncientTribalMedicine"]</xpath>
+		<value>
+			  <techprintCount>1</techprintCount>
+			  <techprintCommonality>1</techprintCommonality>
+			  <techprintMarketValue>75</techprintMarketValue>
+			  <heldByFactionCategoryTags><li>Tribal</li></heldByFactionCategoryTags>
+		</value>
+	</Operation>
+	
 
 </Patch>

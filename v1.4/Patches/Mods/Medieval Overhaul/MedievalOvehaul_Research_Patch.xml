@@ -146,47 +146,22 @@
 					</value>
 				</li>
 				
-				<li Class="PatchOperationFindMod">
-					<mods>
-					  <li>Vanilla Cooking Expanded</li>
-					</mods>
-						<match Class="PatchOperationConditional">
-								<xpath>Defs/RecipeDef[starts-with(defName,'VCE_')]/researchPrerequisites/li[text()="DankPyon_BasicCooking"]</xpath>
-									<match Class="PatchOperationReplace">
-									<xpath>Defs/RecipeDef[starts-with(defName,'VCE_')]/researchPrerequisites/li[text()="DankPyon_BasicCooking"]</xpath>
-										<value>
-											  <li>RR_Cooking</li>
-										</value>
-									</match>
-									<nomatch Class="RR.PatchOperationAddOrReplace">
-									<xpath>Defs/RecipeDef[starts-with(defName,'VCE_')]/researchPrerequisites</xpath>
-										<value>
-											  <li>RR_Cooking</li>
-										</value>
-									</nomatch>
-						</match>
-				</li> 
+				<!-- <li Class="RR.PatchOperationAddOrReplace">
+				<doesRequire>vanillaexpanded.vcooke</doesRequire>
+					<xpath>Defs/RecipeDef[starts-with(defName,'VCE_')]/researchPrerequisites/li[text()="DankPyon_BasicCooking"]</xpath>
+					<value>
+						  <li>RR_Cooking</li>
+					</value>
+				</li>
 				
-				<li Class="PatchOperationFindMod">
-					<mods>
-					  <li>Vanilla Cooking Expanded</li>
-					</mods>
-						<match Class="PatchOperationConditional">
-							<xpath>Defs/RecipeDef[starts-with(defName,'VCE_')]/researchPrerequisite[text()="DankPyon_BasicCooking"]</xpath>
-								<match Class="PatchOperationReplace">
-								<xpath>Defs/RecipeDef[starts-with(defName,'VCE_')]/researchPrerequisite[text()="DankPyon_BasicCooking"]</xpath>
-									<value>
-										  <researchPrerequisite>RR_Cooking</researchPrerequisite>
-									</value>
-								</match>
-								<nomatch Class="RR.PatchOperationAddOrReplace">
-								<xpath>Defs/RecipeDef[starts-with(defName,'VCE_')]</xpath>
-									<value>
-										  <researchPrerequisite>RR_Cooking</researchPrerequisite>
-									</value>
-								</nomatch>
-						</match>
-				</li> 
+				<li Class="RR.PatchOperationAddOrReplace">
+				<doesRequire>vanillaexpanded.vcooke</doesRequire>
+					<xpath>Defs/RecipeDef[starts-with(defName,'VCE_')]/researchPrerequisite[text()="DankPyon_BasicCooking"]</xpath>
+					<value>
+						  <li>RR_Cooking</li>
+					</value>
+				</li> -->
+				
 				
 				<li Class="PatchOperationRemove">
 					<xpath>Defs/ResearchProjectDef[defName = "DankPyon_BasicCooking"]</xpath>

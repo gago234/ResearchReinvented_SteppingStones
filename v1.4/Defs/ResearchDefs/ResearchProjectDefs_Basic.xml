@@ -5,7 +5,7 @@
     <defName>RR_Walls</defName>
     <label>walls</label>
     <description>Walls are quite useful: they keep enemies out, and keep you save. The only risk is that giant hole you don't know what to do with but need anyway, because you have to be able to enter your safe zone.</description>
-    <baseCost>50</baseCost>
+    <baseCost>40</baseCost>
     <techLevel>Neolithic</techLevel>
 	<tags>
 	  <li>TribalStart</li>
@@ -19,7 +19,7 @@
     <defName>RR_Doors</defName>
     <label>doors</label>
     <description>The solution to that gap you required! With this revolutionary invention you can remain even safer!</description>
-    <baseCost>150</baseCost>
+    <baseCost>115</baseCost>
     <techLevel>Medieval</techLevel>
 	<tags>
       <li>ClassicStart</li>
@@ -38,7 +38,7 @@
     <defName>RR_Bridges</defName>
     <label>bridges</label>
     <description>Getting wet makes you cold. To avoid that, your researcher came up with a floor, that rests on mini walls, on which you can walk and even build!</description>
-    <baseCost>150</baseCost>
+    <baseCost>115</baseCost>
     <techLevel>Medieval</techLevel>
 	<tags>
       <li>ClassicStart</li>
@@ -57,7 +57,7 @@
     <defName>RR_Crafting</defName>
     <label>crafting</label>
     <description>Opposable thumbs are useful for more than picking fruit. You can use those small appendages to make formidable tools. You only had to realise it!</description>
-    <baseCost>50</baseCost>
+    <baseCost>40</baseCost>
     <techLevel>Neolithic</techLevel>
 	<tags>
 	  <li>TribalStart</li>
@@ -71,7 +71,7 @@
     <defName>RR_PrimitiveButchering</defName>
     <label>primitive butchering</label>
     <description>All those bodies, you killed in defence; who you gonna call? The butcher!</description>
-    <baseCost>45</baseCost>
+    <baseCost>35</baseCost>
     <techLevel>Neolithic</techLevel>
 	<tags>
 	  <li>TribalStart</li>
@@ -85,7 +85,7 @@
     <defName>RR_Butchering</defName>
     <label>butchering</label>
     <description>The butcher has seen and experienced many food poisonings and told the researcher. After rigorous experimentation, the researcher discovered that the food poisoned people must have taken in some earth, which made them sick. He reasoned that to not get sick, the butcher must butcher off of the ground.</description>
-    <baseCost>125</baseCost>
+    <baseCost>95</baseCost>
     <techLevel>Neolithic</techLevel>
 	<tags>
       <li>ClassicStart</li>
@@ -101,7 +101,7 @@
     <defName>RR_PrimitiveCooking</defName>
     <label>primitive cooking</label>
     <description>"What if I were to mix meat with berries and vegetables?" Wondered one of your tribespeople. Your researcher has found the answer to this question in one of his researches.</description>
-    <baseCost>75</baseCost>
+    <baseCost>55</baseCost>
     <techLevel>Neolithic</techLevel>
 	<tags>
 	  <li>TribalStart</li>
@@ -119,7 +119,7 @@
     <defName>RR_Cooking</defName>
     <label>cooking</label>
     <description>Your cook has thought of some amazingly fantastic dishes, but thinks he cannot make them on a campfire. Your researcher has a solution for this problem: an invention called a stove!</description>
-    <baseCost>150</baseCost>
+    <baseCost>115</baseCost>
     <techLevel>Medieval</techLevel>
 	<tags>
       <li>ClassicStart</li>
@@ -136,7 +136,7 @@
     <defName>RR_MethodicalResearch</defName>
     <label>methodical research</label>
     <description>After many innovating inventions that made your group renowned throughout the region, your researcher has thought of a way to make more innovations more efficiently!</description>
-    <baseCost>500</baseCost>
+    <baseCost>375</baseCost>
     <techLevel>Medieval</techLevel>
 	<tags>
       <li>ClassicStart</li>
@@ -154,7 +154,7 @@
     <defName>RR_Tailoring</defName>
     <label>tailor bench</label>
     <description>Having grown tired of sitting on the ground weaving clothing, your tailor has come up with a structure to more comfortably create clothes.</description>
-    <baseCost>250</baseCost>
+    <baseCost>190</baseCost>
     <techLevel>Medieval</techLevel>
 	<tags>
       <li>ClassicStart</li>
@@ -174,7 +174,7 @@
     <defName>RR_Bedrolls</defName>
     <label>bedrolls</label>
     <description>Sick and tired of sleeping on the ground and nothing to do with the animal skins from slaughtering, your researcher became determined to do something about it. That determination resulted in the invention of bedrolls.</description>
-    <baseCost>200</baseCost>
+    <baseCost>150</baseCost>
     <techLevel>Neolithic</techLevel>
 	<tags>
 	  <li>TribalStart</li>
@@ -192,7 +192,7 @@
     <defName>RR_BasicFurniture</defName>
     <label>basic furniture</label>
     <description>If you can carve tools out of wood, why not carve items that make life more comfortable?</description>
-    <baseCost>100</baseCost>
+    <baseCost>75</baseCost>
     <techLevel>Neolithic</techLevel>
 	<tags>
 	  <li>TribalStart</li>
@@ -209,7 +209,7 @@
     <defName>RR_Art</defName>
     <label>art</label>
     <description>Having items and furniture sure is nice, but what if those also LOOKED nice. Now you can, thanks to a flash of inspiration from your researcher.</description>
-    <baseCost>225</baseCost>
+    <baseCost>170</baseCost>
     <techLevel>Neolithic</techLevel>
 	<tags>
       <li>ClassicStart</li>
@@ -227,7 +227,7 @@
     <defName>RR_BasicCover</defName>
     <label>basic cover</label>
     <description>Walls provide cover but take time to make... Why not make mini-walls to also provide protection from projectiles, but are easier to make?</description>
-    <baseCost>75</baseCost>
+    <baseCost>55</baseCost>
     <techLevel>Neolithic</techLevel>
 	<tags>
       <li>ClassicStart</li>
@@ -243,7 +243,7 @@
     <defName>RR_AdvancedCover</defName>
     <label>advanced cover</label>
     <description>Some of your men remember the barricade, a waist high wall to provide cover from stones and arrows. This is the cheaper and faster little brother, to provide you with cover from hostile (and probably friendly) gunfire: the sandbag.</description>
-    <baseCost>350</baseCost>
+    <baseCost>265</baseCost>
     <techLevel>Industrial</techLevel>
 	<tags>
       <li>ClassicStart</li>
@@ -259,7 +259,7 @@
     <defName>RR_BasicTraps</defName>
     <label>basic traps</label>
     <description>An ambush is dangerous enough with people, but what if you were to incorporate traps to hold down your enemies during an ambush? The effect would double, if not triple!</description>
-    <baseCost>75</baseCost>
+    <baseCost>55</baseCost>
     <techLevel>Neolithic</techLevel>
 	<tags>
 	  <li>TribalStart</li>
@@ -278,7 +278,7 @@
     <defName>RR_BurialRites</defName>
     <label>burial rites</label>
     <description>Death is the beginning of a new life. Burial rites play an important part in gaining the right to the next phase of ones journey.</description>
-    <baseCost>25</baseCost>
+    <baseCost>20</baseCost>
     <techLevel>Neolithic</techLevel>
 	<tags>
 	  <li>TribalStart</li>
@@ -294,7 +294,7 @@
     <defName>RR_Roads</defName>
     <label>roads</label>
     <description>During one of his creative walks, your researcher found that often travelled paths walk smoother. After some light experimenting, he discovered that throwing down flat rocks on those paths enables people to move more quickly.</description>
-    <baseCost>35</baseCost>
+    <baseCost>25</baseCost>
     <techLevel>Neolithic</techLevel>
 	<tags>
 	  <li>TribalStart</li>
@@ -308,7 +308,7 @@
     <defName>RR_IndoorFlooring</defName>
     <label>indoor flooring</label>
     <description>Lately, the members of the tribe have been sick more often. Your researcher thinks it may have something to do with the ground they walk on. He has come with a solution for in their abodes.</description>
-    <baseCost>75</baseCost>
+    <baseCost>55</baseCost>
     <techLevel>Neolithic</techLevel>
 	<tags>
 	  <li>TribalStart</li>
@@ -327,7 +327,7 @@
     <defName>RR_BasicGames</defName>
     <label>basic games</label>
     <description>The invention of crafting has led a creative soul to invent basic games for all ages.</description>
-    <baseCost>75</baseCost>
+    <baseCost>55</baseCost>
     <techLevel>Neolithic</techLevel>
 	<tags>
 	  <li>TribalStart</li>
@@ -344,7 +344,7 @@
     <defName>RR_BoardGames</defName>
     <label>board games</label>
     <description>For some strategic people the basic games were too... basic. They, together with the resident researcher, have come up with board games.</description>
-    <baseCost>150</baseCost>
+    <baseCost>115</baseCost>
     <techLevel>Neolithic</techLevel>
 	<tags>
       <li>ClassicStart</li>
@@ -362,7 +362,7 @@
     <defName>RR_Firemaking</defName>
     <label>firemaking</label>
     <description>"AND THEN THERE WAS LIGHT!", or so your researcher yelled after he realised the secret of lightning striking the vegetation.</description>
-    <baseCost>15</baseCost>
+    <baseCost>10</baseCost>
     <techLevel>Neolithic</techLevel>
 	<tags>
 	  <li>TribalStart</li>
@@ -378,7 +378,7 @@
     <defName>RR_DomHerb</defName>
     <label>domesticated herbalism</label>
     <description>The people who gather food from the wild think that they can maybe domesticate the plants they use as food. After some testing, they discovered that they can, indeed, do so.</description>
-    <baseCost>75</baseCost>
+    <baseCost>55</baseCost>
     <techLevel>Neolithic</techLevel>
 	<tags>
 	  <li>TribalStart</li>
@@ -392,7 +392,7 @@
     <defName>RR_Agriculture</defName>
     <label>agriculture</label>
     <description>After the discovery of domesticated herbalism, your herbalists have realised the next step in their profession: better plants on a larger scale, called agriculture.</description>
-    <baseCost>150</baseCost>
+    <baseCost>115</baseCost>
     <techLevel>Neolithic</techLevel>
 	<tags>
       <li>ClassicStart</li>
@@ -411,7 +411,7 @@
     <defName>RR_Smokeleaf</defName>
     <label>smokeleaf</label>
     <description>Your tribespeople have had some weird, but enjoyable, symptoms after eating a certain plant. After the discovery of domesticated herbalism, your herbalists think they might also be able to domesticate the plant they call "smokeleaf".</description>
-    <baseCost>125</baseCost>
+    <baseCost>95</baseCost>
     <techLevel>Neolithic</techLevel>
 	<tags>
 	  <li>TribalStart</li>
@@ -427,7 +427,7 @@
     <defName>RR_Psychoid</defName>
     <label>psychoid</label>
     <description>Chewing on some weird plans gave some of your herbalists energy. They have dubbed this invigorating plant "psychoid" and believe they can domesticate and brew it into tea.</description>
-    <baseCost>175</baseCost>
+    <baseCost>130</baseCost>
     <techLevel>Neolithic</techLevel>
 	<tags>
 	  <li>TribalStart</li>
@@ -446,7 +446,7 @@
     <defName>RR_PrimitiveClothing</defName>
     <label>primitive clothing</label>
     <description>Nothing to do with the leftover leather you have laying about from the butchering of various dead organisms? Now you can craft those into some clothing, some would consider it primitive, but to your tribespeople, it is revolutionary!</description>
-    <baseCost>75</baseCost>
+    <baseCost>55</baseCost>
     <techLevel>Neolithic</techLevel>
 	<tags>
       <li>ClassicStart</li>
@@ -467,7 +467,7 @@
     <defName>RR_PrimitiveMeleeWeapons</defName>
     <label>primitive melee weapons</label>
     <description>Early in your time on this world you discovered that banging rocks together breaks pieces of. Now you discovered it can be done with any material, so long as you hit it hard enough. This discovery results in the ability to craft clubs and knifes</description>
-    <baseCost>75</baseCost>
+    <baseCost>55</baseCost>
     <techLevel>Neolithic</techLevel>
 	<tags>
       <li>ClassicStart</li>
@@ -484,7 +484,7 @@
     <defName>RR_PrimitiveRangedWeapons</defName>
     <label>primitive raged weapons</label>
     <description>Weapons to smash people's heads in from up close are nice, but what about weapons to smash people's heads in from a distance? Your researcher discovered the solution to this conundrum during a... murderous mood.</description>
-    <baseCost>100</baseCost>
+    <baseCost>75</baseCost>
     <techLevel>Neolithic</techLevel>
 	<tags>
 	  <li>ClassicStart</li>
@@ -500,7 +500,7 @@
     <defName>RR_IndustrialClothing</defName>
     <label>industrial clothing</label>
     <description>Tailor clothing typical for industrial times.</description>
-    <baseCost>500</baseCost>
+    <baseCost>375</baseCost>
     <techLevel>Industrial</techLevel>
       <researchViewX>3.00</researchViewX>
       <researchViewY>0.50</researchViewY>
