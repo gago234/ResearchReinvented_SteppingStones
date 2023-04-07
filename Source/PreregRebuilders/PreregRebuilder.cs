@@ -22,7 +22,7 @@ namespace PeteTimesSix.ResearchReinvented_SteppingStones.PreregRebuilders
             DoTerrains();
             DoRecipes();
             DoProjects();
-            
+                        
 
             ThingDefOf_Custom.RR_ThinkingSpot.researchPrerequisites = null;
         }

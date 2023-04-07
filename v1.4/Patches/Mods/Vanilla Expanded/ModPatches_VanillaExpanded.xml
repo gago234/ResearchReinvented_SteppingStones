@@ -211,21 +211,6 @@
 		</match>
 	</Operation>
 	
-	<Operation Class="PatchOperationFindMod">
-        <mods>
-            <li>Vanilla Plants Expanded</li>
-        </mods>
-       <match Class="RR.PatchOperationAddOrReplace">
-			<xpath>/Defs/ThingDef[defName = "VCE_Grass" or defName = "VCE_TallGrass"]</xpath>
-			<value>
-				<plant>
-					<sowResearchPrerequisites>
-						<li>RR_DomHerb</li>
-					</sowResearchPrerequisites>
-				</plant>
-			</value>
-		</match>
-    </Operation>
 	
 	<Operation Class="PatchOperationFindMod">
         <mods>

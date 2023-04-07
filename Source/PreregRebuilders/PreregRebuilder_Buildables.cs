@@ -179,7 +179,8 @@ namespace PeteTimesSix.ResearchReinvented_SteppingStones.PreregRebuilders
 
             if (!buildableOverride.building.shipPart)
             {
-                if (buildableOverride.IsDoor && !buildableOverride.thingClass.ToString().Contains("Windows"))
+                if (buildableOverride.IsDoor && !buildableOverride.thingClass.ToString().Contains("Windows") &&
+                    (!buildableOverride.stuffCategories.Contains(StuffCategoryDefOf.Fabric) || !buildableOverride.stuffCategories.Contains(StuffCategoryDefOf.Leathery)))
                 {
                     buildableOverride?.researchPrerequisites?.Add(ResearchProjectDefOf_Custom.RR_Doors);
                 }
