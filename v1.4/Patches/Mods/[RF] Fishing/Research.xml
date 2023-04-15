@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<Patch>
+	
+	<Operation Class="PatchOperationFindMod">
+		<mods>
+			<li>[RF] Fishing-ReWork</li>
+			<li>[RF] Fishing [1.0]</li>
+		</mods>
+		<match Class="PatchOperationSequence">
+			<operations>
+			
+				<li Class="PatchOperationAdd">
+					<xpath>/Defs</xpath>
+					<value>
+						<ResearchProjectDef>
+							<defName>RR_RFF_Fishing</defName>
+							<label>fishing</label>
+							<description>Weapons are useful for many things, among which is poking. Once, when trying to poke the water out of curiosity, one of the children of your tribe accidentally poked a fish with a pila. This led to discovery of fishing.</description>
+							<techLevel>Neolithic</techLevel>
+							<baseCost>75</baseCost>
+							<tags>
+							  <li>ClassicStart</li>
+							</tags>
+							<prerequisites>
+								<li>RR_PrimitiveMeleeWeapons</li>
+							</prerequisites>
+						</ResearchProjectDef>
+					</value>
+				</li>
+				
+				<li Class="PatchOperationAdd">
+					<xpath>/Defs</xpath>
+					<value>
+						<ResearchProjectDef>
+							<defName>RR_RFF_TrapFishing</defName>
+							<label>fishing traps</label>
+							<description>Your tribespeople have found fishing to be amazing. Yet your researcher wondered if it could be even better. Yes. Yes it can be better. Using traps, your tribespeople now only have to wait for a fish to swim into the fish trap to get their food.</description>
+							<techLevel>Neolithic</techLevel>
+							<baseCost>250</baseCost>
+							<prerequisites>
+								<li>RR_BasicTraps</li>
+								<li>RR_RFF_Fishing</li>
+							</prerequisites>
+						</ResearchProjectDef>
+					</value>
+				</li>
+				
+				<li Class="PatchOperationFindMod">
+					<mods>
+						<li>Vanilla Factions Expanded - Medieval</li>
+					</mods>
+					<match Class="PatchOperationAdd">
+						<xpath>Defs/ResearchProjectDef[defName = "RR_RFF_Fishing"]/tags</xpath>
+						<value>
+							 <li>VFEM_MedievalStart</li>
+						</value>
+					</match>
+				</li>
+				
+			</operations>
+		</match>
+	</Operation>
+	
+</Patch>

@@ -167,5 +167,34 @@
 		</value>
 	</Operation>
 	
+		
+	
+	<Operation Class="PatchOperationFindMod">
+        <mods>
+            <li>Doors Expanded</li>
+			<li>Doors Expanded (Dev)</li>
+        </mods>
+			<match Class="PatchOperationSequence">
+			<operations>
+			
+				<li Class="PatchOperationReplace">					
+					<xpath>Defs/ThingDef[defName="HeronCurtainTribal" or
+										defName="HeronCurtainTribalDouble" or
+										defName="HeronCurtainTribalTriple"]/researchPrerequisites/li[text()="ProjectHeron_Curtains"]</xpath>
+					<value>
+						<li>RR_PrimitiveClothing</li>
+						<li>RR_Walls</li>	
+					</value>
+				</li>	
+
+				<li Class="PatchOperationRemove">
+					<xpath>/Defs/ResearchProjectDef[defName = "ProjectHeron_Curtains"]</xpath>
+				</li>	
+				
+			</operations>
+        </match>
+    </Operation>
+
+	
 
 </Patch>

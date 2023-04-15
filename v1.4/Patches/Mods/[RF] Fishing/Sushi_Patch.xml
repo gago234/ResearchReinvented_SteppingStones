@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<Patch>
+	
+	<Operation Class="PatchOperationFindMod">
+		<mods>
+			<li>[RF] Fishing-ReWork</li>
+			<li>[RF] Fishing-ReWork Seafood and Sushi Addon</li>
+		</mods>
+		<match Class="PatchOperationSequence">
+		<success>Always</success>
+			<operations>
+			
+				<li Class="PatchOperationAdd">
+					<xpath>/Defs/ResearchProjectDef[defName = "RFF_MakeSeafood"]</xpath>
+					<value>
+					   <prerequisites>
+							<li>RR_Cooking</li>
+						</prerequisites>
+					</value>
+				</li>
+				
+			</operations>
+		</match>
+	</Operation>
+	
+</Patch>

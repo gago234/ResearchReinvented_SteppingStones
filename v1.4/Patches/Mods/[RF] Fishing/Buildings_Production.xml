@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<Patch>
+	
+	<Operation Class="PatchOperationFindMod">
+		<mods>
+			<li>[RF] Fishing-ReWork</li>
+			<li>[RF] Fishing [1.0]</li>
+		</mods>
+		<match Class="PatchOperationSequence">
+			<operations>
+			
+				<li Class="PatchOperationAdd">
+					<xpath>/Defs/ThingDef[defName = "RBB_FishingSpot"]</xpath>
+					<value>
+						<researchPrerequisites>
+							<li>RR_RFF_Fishing</li>
+						</researchPrerequisites>
+					</value>
+				</li>
+				
+				<li Class="PatchOperationConditional">
+					<xpath>Defs/ThingDef[defName = "RBB_IceFishingSpot"]</xpath>
+					<match Class="PatchOperationAdd">
+						<xpath>Defs/ThingDef[defName = "RBB_IceFishingSpot"]</xpath>
+						<value>
+							<researchPrerequisites>
+								<li>RR_RFF_Fishing</li>
+							</researchPrerequisites>
+						</value>
+					</match>
+				</li>
+				
+				<li Class="PatchOperationAdd">
+					<xpath>/Defs/ThingDef[defName = "ShellfishTrap"]</xpath>
+					<value>
+						<researchPrerequisites>
+							<li>RR_RFF_TrapFishing</li>
+						</researchPrerequisites>
+					</value>
+				</li>
+				
+			  <li Class="PatchOperationAdd">
+					<xpath>/Defs/RecipeDef[defName = "CookMealGrilledFish" or defName = "CookMealGrilledFishBulk"]</xpath>
+					<value>
+					  <researchPrerequisite>RR_PrimitiveCooking</researchPrerequisite>
+					</value>
+			  </li>
+			  
+			  <li Class="PatchOperationAdd"> 
+						<xpath>/Defs</xpath>
+						<value>
+						
+						<ThingDef ParentName="MealCooked">
+								<defName>RR_RoastedFish</defName>
+								<label>roasted fish</label>
+								<description>A very simple meal, made by roasting fish over a campfire. Less nutrious then a simple meal.</description>
+								<graphicData>
+								 <texPath>Meals/RoastedFish</texPath>
+								  <graphicClass>Graphic_StackCount</graphicClass>
+								</graphicData>
+								<statBases>
+								  <MarketValue>8</MarketValue>
+								  <Mass>0.072</Mass>
+								  <WorkToMake>175</WorkToMake>
+								  <Nutrition>0.20</Nutrition>
+								</statBases>
+								<stackLimit>20</stackLimit>
+								<ingestible>
+									<foodType>Meal</foodType>
+									<preferability>MealSimple</preferability>
+									<ingestEffect>EatMeat</ingestEffect>
+									<ingestSound>Meal_Eat</ingestSound>
+									<maxNumToIngestAtOnce>5</maxNumToIngestAtOnce>
+								</ingestible>
+								<tradeability>Buyable</tradeability>
+						  </ThingDef>
+							  
+						
+						<RecipeDef>
+							<defName>RR_CookMealRoastedFish</defName>
+							<label>roast fish</label>
+							<description>Roast fish at campfire.</description>
+							<jobString>Roasting fish.</jobString>
+							<workAmount>180</workAmount>
+							<workSpeedStat>CookSpeed</workSpeedStat>
+							<requiredGiverWorkType>Cooking</requiredGiverWorkType>
+							<effectWorking>Cook</effectWorking>
+							<soundWorking>Recipe_CookMeal</soundWorking>
+							<allowMixingIngredients>true</allowMixingIngredients>
+							<ingredientValueGetterClass>IngredientValueGetter_Nutrition</ingredientValueGetterClass>
+							<ingredients>
+								<li>
+									<filter>
+										<categories>
+											<li>RF_RawSeafood</li>
+										</categories>
+									</filter>
+									<count>0.5</count>
+								</li>
+							</ingredients>
+							<products>
+								<RR_RoastedFish>4</RR_RoastedFish>
+							</products>
+							<fixedIngredientFilter>
+								<categories>
+									<li>RF_RawSeafood</li>
+								</categories>
+								<specialFiltersToDisallow>
+									<li>AllowRotten</li>
+								</specialFiltersToDisallow>
+							</fixedIngredientFilter>
+							<defaultIngredientFilter>
+								<categories>
+									<li>RF_RawSeafood</li>
+								</categories>
+							</defaultIngredientFilter>
+							<workSkill>Cooking</workSkill>
+							<recipeUsers>
+								<li>Campfire</li>
+							</recipeUsers>
+							<researchPrerequisite>RR_PrimitiveCooking</researchPrerequisite>
+						</RecipeDef>
+
+						
+						<RecipeDef>
+							<defName>RR_CookMealRoastedFish_Bulk</defName>
+							<label>roast fish x4</label>
+							<description>Roast fish at campfire.</description>
+							<jobString>Roasting fish.</jobString>
+							<workSpeedStat>CookSpeed</workSpeedStat>
+							<workAmount>780</workAmount>
+							<requiredGiverWorkType>Cooking</requiredGiverWorkType>
+							<effectWorking>Cook</effectWorking>
+							<soundWorking>Recipe_CookMeal</soundWorking>
+							<allowMixingIngredients>true</allowMixingIngredients>
+							<ingredientValueGetterClass>IngredientValueGetter_Nutrition</ingredientValueGetterClass>
+							<ingredients>
+								<li>
+									<filter>
+										<categories>
+											<li>RF_RawSeafood</li>
+										</categories>
+									</filter>
+									<count>2.0</count>
+								</li>
+							</ingredients>
+							<products>
+								<RR_RoastedFish>16</RR_RoastedFish>
+							</products>
+							<fixedIngredientFilter>
+								<categories>
+									<li>RF_RawSeafood</li>
+								</categories>
+								<specialFiltersToDisallow>
+									<li>AllowRotten</li>
+								</specialFiltersToDisallow>
+							</fixedIngredientFilter>
+							<defaultIngredientFilter>
+								<categories>
+									<li>RF_RawSeafood</li>
+								</categories>
+							</defaultIngredientFilter>
+							<workSkill>Cooking</workSkill>
+							<recipeUsers>
+								<li>Campfire</li>
+							</recipeUsers>
+							<researchPrerequisite>RR_PrimitiveCooking</researchPrerequisite>
+						</RecipeDef>
+						
+					</value>
+			  </li>
+				
+			</operations>
+		</match>
+	</Operation>
+	
+</Patch>
