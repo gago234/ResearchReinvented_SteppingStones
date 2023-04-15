@@ -110,7 +110,7 @@ namespace PeteTimesSix.ResearchReinvented_SteppingStones.PreregRebuilders
             {
                 buildable.researchPrerequisites.Add(ResearchProjectDefOf_Custom.RR_Doors);
             }
-            else if (buildable.designationCategory.defName == "Security")
+            else if (buildable.designationCategory.defName == "Security" || (buildable.IsWall() && buildable.fillPercent < 1f))
             {
                 if(buildable.IsTrap())
                     buildable.researchPrerequisites.Add(ResearchProjectDefOf_Custom.RR_BasicTraps);

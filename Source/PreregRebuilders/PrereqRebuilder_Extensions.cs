@@ -74,15 +74,19 @@ namespace PeteTimesSix.ResearchReinvented_SteppingStones.PreregRebuilders
                 buildable.stuffCategories.Count() <= 2;
         }
 
+        private static bool IsWall(this ThingDef buildable)
+        {
+            return buildable == ThingDefOf.Wall || (buildable.thingClass == typeof(Building) &&
+                   buildable.tickerType == TickerType.Never && buildable.placingDraggableDimensions > 0 &&
+                   buildable.rotatable == false && (buildable.graphicData.linkType == LinkDrawerType.Basic || buildable.graphicData.linkType == LinkDrawerType.CornerFiller));
+        }
+
         private static bool IsStructure(this ThingDef buildable)
         {
             return buildable == ThingDefOf.Wall || buildable.IsFence || buildable == ThingDefOf.Column ||
-                   (buildable.thingClass == typeof(Building) &&
-                   buildable.tickerType == TickerType.Never && buildable.placingDraggableDimensions > 0 &&
-                   buildable.rotatable == false &&
-                   !buildable.designationCategory.defName.Contains("Security")) ||
-                   buildable.thingClass == typeof(Building) && buildable.passability == Traversability.PassThroughOnly &&
-                   (buildable.defName.Contains("Column") || buildable.defName.Contains("Frame"));
+                   (IsWall(buildable) && !buildable.designationCategory.defName.Contains("Security")) ||
+                   (buildable.thingClass == typeof(Building) && buildable.passability == Traversability.PassThroughOnly &&
+                   (buildable.defName.Contains("Column") || buildable.defName.Contains("Frame")));
         }
 
         private static bool IsTentOrSimilar(this ThingDef buildable)

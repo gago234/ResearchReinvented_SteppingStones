@@ -245,14 +245,14 @@
     <description>Some of your men remember the barricade, a waist high wall to provide cover from stones and arrows. This is the cheaper and faster little brother, to provide you with cover from hostile (and probably friendly) gunfire: the sandbag.</description>
     <baseCost>265</baseCost>
     <techLevel>Industrial</techLevel>
+    <prerequisites>
+      <li>RR_BasicCover</li>
+    </prerequisites>
 	<tags>
       <li>ClassicStart</li>
     </tags>
-    <prerequisites>
-      <li>Gunsmithing</li>
-    </prerequisites>
-	  <researchViewX>8.00</researchViewX>
-	  <researchViewY>3.45</researchViewY>
+	<researchViewX>0.00</researchViewX>
+	<researchViewY>4.85</researchViewY>
   </ResearchProjectDef>
 
   <ResearchProjectDef>
