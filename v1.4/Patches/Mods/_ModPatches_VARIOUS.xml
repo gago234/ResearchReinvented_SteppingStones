@@ -110,7 +110,7 @@
 					<xpath>/Defs/ResearchProjectDef[defName = "AnimalRidingGear"]</xpath>
 					<value>
 						<prerequisites>
-							<li>TS_PrimitiveClothing</li>
+							<li>RR_PrimitiveClothing</li>
 						</prerequisites>
 					</value>
 				</li>				
