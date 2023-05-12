@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Verse;
+using Verse.Noise;
 
 namespace PeteTimesSix.ResearchReinvented_SteppingStones.PreregRebuilders
 {
@@ -35,7 +36,7 @@ namespace PeteTimesSix.ResearchReinvented_SteppingStones.PreregRebuilders
                 }
                 catch (Exception e)
                 {
-                    Log.Warning($"RR.SS: Error during research project assingment: {e}");
+                    Log.Warning($"RR.SS: Error during terrain research project assingment with {terrain}: {e}");
                 }
             }
             foreach (var terrainOveride in ProjectTerrainDefsOverride)
@@ -46,7 +47,7 @@ namespace PeteTimesSix.ResearchReinvented_SteppingStones.PreregRebuilders
                 }
                 catch (Exception e)
                 {
-                    Log.Warning($"RR.SS: Error during research project assingment: {e}");
+                    Log.Warning($"RR.SS: Error during terrain override research project assingment with {terrainOveride}: {e}");
                 }
             }
         }
@@ -68,10 +69,10 @@ namespace PeteTimesSix.ResearchReinvented_SteppingStones.PreregRebuilders
             {
                 terrain.researchPrerequisites.Add(ResearchProjectDefOf_Custom.RR_Roads);
             }
-            else if (terrain.CostList?.FirstOrDefault()?.thingDef?.stuffProps?.categories != null && terrain?.CostList?.FirstOrDefault(t => t.thingDef.stuffProps.categories.Contains(StuffCategoryDefOf.Stony)) != null)
-            {
+            else if (terrain.CostList.Any(t => t.thingDef?.stuffProps?.categories != null && t.thingDef.stuffProps.categories.Contains(StuffCategoryDefOf.Stony)))
+            {               
                 terrain.researchPrerequisites.Add(ResearchProjectDef.Named("Stonecutting"));
-                terrain.researchPrerequisites.Add(ResearchProjectDefOf_Custom.RR_IndoorFlooring);
+                terrain.researchPrerequisites.Add(ResearchProjectDefOf_Custom.RR_IndoorFlooring);                
             }
             else
             {
@@ -81,24 +82,24 @@ namespace PeteTimesSix.ResearchReinvented_SteppingStones.PreregRebuilders
 
         public static void OverridePrerequisitesToTerrain(TerrainDef terrain)
         {
-            if (terrain?.tags != null && !terrain.tags.Where(t => t == "Ship" || t == "Space").Any())
+            if (!terrain.tags.Any(t => t == "Ship" || t == "Space"))
             {
-                if (terrain.CostList?.Where(t => t.thingDef.stuffProps.categories.Contains(StuffCategoryDefOf.Stony)) != null)
+                if (terrain.CostList.Any(t => t.thingDef?.stuffProps?.categories != null && t.thingDef.stuffProps.categories.Contains(StuffCategoryDefOf.Stony)))
                 {
                     if (!terrain.researchPrerequisites.Contains(ResearchProjectDef.Named("Stonecutting")))
                         terrain.researchPrerequisites.Add(ResearchProjectDef.Named("Stonecutting"));
                     terrain.researchPrerequisites.Add(ResearchProjectDefOf_Custom.RR_IndoorFlooring);
-                }
-                else if (terrain?.CostList?.Where(t => t.thingDef.stuffProps.categories.Contains(StuffCategoryDefOf.Metallic)) != null && terrain.researchPrerequisites.Contains(ResearchProjectDef.Named("Stonecutting")))
+                }               
+                else if (terrain.CostList.Any(t => t.thingDef?.stuffProps?.categories != null && t.thingDef.stuffProps.categories.Contains(StuffCategoryDefOf.Metallic)) && terrain.researchPrerequisites.Contains(ResearchProjectDef.Named("Stonecutting")))
                 {
                     ResearchProjectDef thing;
-                    thing = terrain.researchPrerequisites.Where(r => r.defName == "Stonecutting").First();
+                    thing = terrain.researchPrerequisites.First(r => r.defName == "Stonecutting");
                     if (thing != null)
                     {
                         terrain.researchPrerequisites.Replace(thing, ResearchProjectDef.Named("Electricity"));
                     }
                 }
-                else if (terrain?.CostList?.Where(t => t.thingDef.stuffProps.categories.Contains(StuffCategoryDefOf.Metallic)) != null)
+                else if (terrain.CostList.Any(t => t.thingDef?.stuffProps?.categories != null && t.thingDef.stuffProps.categories.Contains(StuffCategoryDefOf.Metallic)))
                 {
                     if (!terrain.researchPrerequisites.Contains(ResearchProjectDef.Named("Smithing")))
                         terrain.researchPrerequisites.Add(ResearchProjectDef.Named("Smithing"));

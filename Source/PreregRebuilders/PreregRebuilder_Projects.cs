@@ -97,7 +97,7 @@ namespace PeteTimesSix.ResearchReinvented_SteppingStones.PreregRebuilders
                         if (buildable.IsTentOrSimilar()) { unlockPoints.AddPoint(HasOwnResearch(def, project, ResearchProjectDefOf_Custom.RR_Tailoring)); }
                         if (buildable.IsGrave()) { unlockPoints.AddPoint(HasOwnResearch(def, project, ResearchProjectDefOf_Custom.RR_BurialRites)); }
                         if (buildable.IsTrap()) { unlockPoints.AddPoint(HasOwnResearch(def, project, ResearchProjectDefOf_Custom.RR_BasicTraps)); }
-                        if (buildable.IsElectrical()) { unlockPoints.AddPoint(HasOwnResearch(def, project, ResearchProjectDef.Named("Electricity"))); }
+                        if (ResearchReinvented_SteppingStonesMod.Settings.doPowerPreregs && buildable.IsElectrical()) { unlockPoints.AddPoint(HasOwnResearch(def, project, ResearchProjectDef.Named("Electricity"))); }
                         if (buildable.IsCraftingFacility()) { unlockPoints.AddPoint(HasOwnResearch(def, project, ResearchProjectDefOf_Custom.RR_Crafting)); }
                         if (buildable.IsFurniture()) { unlockPoints.AddPoint(HasOwnResearch(def, project, ResearchProjectDefOf_Custom.RR_BasicFurniture)); }
                         if (buildable.IsStructure()) { unlockPoints.AddPoint(HasOwnResearch(def, project, ResearchProjectDefOf_Custom.RR_Walls)); }

@@ -98,8 +98,12 @@ namespace PeteTimesSix.ResearchReinvented_SteppingStones.PreregRebuilders
 
         private static bool IsElectrical(this ThingDef buildable)
         {
-            return buildable.techLevel >= TechLevel.Industrial && (buildable.HasComp(typeof(CompPower)) || buildable.HasComp(typeof(CompPowerTrader)) || buildable.HasComp(typeof(CompPowerBattery)) ||
-                buildable.HasComp(typeof(CompPowerTransmitter)) || buildable.HasComp(typeof(CompPowerPlant)));
+            return buildable.techLevel >= TechLevel.Industrial &&
+                (buildable.HasComp(typeof(CompPower)) ||
+                buildable.HasComp(typeof(CompPowerTrader)) ||
+                buildable.HasComp(typeof(CompPowerBattery)) ||
+                buildable.HasComp(typeof(CompPowerTransmitter)) ||
+                buildable.HasComp(typeof(CompPowerPlant)));
         }
 
         private static bool IsIdeological(this ThingDef buildable)

@@ -46,7 +46,7 @@ namespace PeteTimesSix.ResearchReinvented_SteppingStones.PreregRebuilders
                 }
                 catch (Exception e)
                 {
-                    Log.Warning($"RR.SS: Error during research project assingment: {e}");
+                    Log.Warning($"RR.SS: Error during building research project assingment with {buildable}: {e}");
                 }
             }
 
@@ -58,7 +58,7 @@ namespace PeteTimesSix.ResearchReinvented_SteppingStones.PreregRebuilders
                 }
                 catch (Exception e)
                 {
-                    Log.Warning($"RR.SS: Error during research project assingment: {e}");
+                    Log.Warning($"RR.SS: Error during biulding override research project assingment with {buildable}: {e}");
                 }
             }
         }
@@ -70,7 +70,7 @@ namespace PeteTimesSix.ResearchReinvented_SteppingStones.PreregRebuilders
             if (buildable.researchPrerequisites == null)
                 buildable.researchPrerequisites = new List<ResearchProjectDef>();
 
-            if (buildable.IsElectrical())
+            if (ResearchReinvented_SteppingStonesMod.Settings.doPowerPreregs && buildable.IsElectrical())
                 buildable.researchPrerequisites.Add(ResearchProjectDef.Named("Electricity"));
             else if (buildable.IsCraftingFacility())
             {

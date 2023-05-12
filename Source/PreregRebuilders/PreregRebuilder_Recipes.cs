@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UnityEngine;
 using Verse;
 
 namespace PeteTimesSix.ResearchReinvented_SteppingStones.PreregRebuilders
@@ -45,7 +46,7 @@ namespace PeteTimesSix.ResearchReinvented_SteppingStones.PreregRebuilders
                 }
                 catch (Exception e)
                 {
-                    Log.Warning($"RR.SS: Error during research project assingment: {e}");
+                    Log.Warning($"RR.SS: Error during recipe research project assingment with {recipe}: {e}");
                 }
             }
 
@@ -57,7 +58,7 @@ namespace PeteTimesSix.ResearchReinvented_SteppingStones.PreregRebuilders
                 }
                 catch (Exception e)
                 {
-                    Log.Warning($"RR.SS: Error during research project assingment: {e}");
+                    Log.Warning($"RR.SS: Error during surgery recipe research project assingment with {recipe}: {e}");
                 }
             }
 
@@ -69,7 +70,7 @@ namespace PeteTimesSix.ResearchReinvented_SteppingStones.PreregRebuilders
                 }
                 catch (Exception e)
                 {
-                    Log.Warning($"RR.SS: Error during research project assingment: {e}");
+                    Log.Warning($"RR.SS: Error during body surgery recipe research project assingment with {recipe}: {e}");
                 }
             }
         }

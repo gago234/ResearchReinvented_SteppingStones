@@ -30,7 +30,7 @@ namespace PeteTimesSix.ResearchReinvented_SteppingStones.PreregRebuilders
                 }
                 catch (Exception e)
                 {
-                    Log.Warning($"RR.SS: Error during research project assingment: {e}");
+                    Log.Warning($"RR.SS: Error during plant research project assingment with {plant}: {e}");
                 }
             }
         }
