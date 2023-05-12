@@ -45,7 +45,13 @@ namespace PeteTimesSix.ResearchReinvented_SteppingStones.DefOfs
         [MayRequireIdeology]
         public static ResearchProjectDef RR_ReligiousThinking;
 
-        static ResearchProjectDefOf_Custom()
+        //vanilla
+		public static ResearchProjectDef ComplexClothing;
+		public static ResearchProjectDef Prosthetics;
+		public static ResearchProjectDef DrugProduction;
+		public static ResearchProjectDef PenoxycylineProduction;
+
+		static ResearchProjectDefOf_Custom()
         {
             DefOfHelper.EnsureInitializedInCtor(typeof(ResearchProjectDefOf_Custom));
         }
