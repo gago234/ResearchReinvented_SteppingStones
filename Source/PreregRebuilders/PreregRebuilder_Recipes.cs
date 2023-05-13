@@ -13,7 +13,7 @@ namespace PeteTimesSix.ResearchReinvented_SteppingStones.PreregRebuilders
 {
     public static partial class PreregRebuilder
     {
-
+        private static Dictionary<BodyPartDef, List<BodyPartRecord>> bodyPartRecordCache = new Dictionary<BodyPartDef, List<BodyPartRecord>>();
         public static void DoRecipes()
         {
             var noProjectRecipeDefs = new HashSet<RecipeDef>();
@@ -62,17 +62,8 @@ namespace PeteTimesSix.ResearchReinvented_SteppingStones.PreregRebuilders
                 }
             }
 
-            foreach (var recipe in noProjectFullBodySurgeryRecipeDefs)
-            {
-                try
-                {
-                    GivePrerequisitesToFullBodySurgery(recipe);
-                }
-                catch (Exception e)
-                {
-                    Log.Warning($"RR.SS: Error during body surgery recipe research project assingment with {recipe}: {e}");
-                }
-            }
+            bodyPartRecordCache.Clear();
+            bodyPartRecordCache = null;
         }
 
         private static void GivePrerequisitesToRecipe(RecipeDef recipe) 
@@ -88,8 +79,7 @@ namespace PeteTimesSix.ResearchReinvented_SteppingStones.PreregRebuilders
                 return;
             }
 
-            //the else needs perhaps to be removed.
-            else if (recipe.ProducedThingDef != null)
+            if (recipe.ProducedThingDef != null)
             {
                 if (recipe.ProducedThingDef.IsWeapon && recipe.ProducedThingDef.techLevel == TechLevel.Neolithic)
                 {
@@ -123,10 +113,6 @@ namespace PeteTimesSix.ResearchReinvented_SteppingStones.PreregRebuilders
                         recipe.researchPrerequisites.Add(ResearchProjectDefOf_Custom.RR_DomHerb);
                     }
                 }
-                else
-                {
-
-                }
             }
         }
 
@@ -135,6 +121,9 @@ namespace PeteTimesSix.ResearchReinvented_SteppingStones.PreregRebuilders
             if (recipe.researchPrerequisites == null)
                 recipe.researchPrerequisites = new List<ResearchProjectDef>();
 
+            if (!recipe.NoResearchPrerequisites())
+                return;
+
             var firstProjects = recipe.FindEarliestPrerequisiteProjects();
             firstProjects = FilterOutSuperEarlyTechs(firstProjects);
             if (firstProjects != null && firstProjects.Any())
@@ -142,38 +131,105 @@ namespace PeteTimesSix.ResearchReinvented_SteppingStones.PreregRebuilders
                 recipe.researchPrerequisites.AddRange(firstProjects);
             }
 
-            /*if(recipe.addsHediff != null) 
+            if (recipe.workerClass.IsAssignableFrom(typeof(Recipe_InstallNaturalBodyPart)))
             {
-                var addedHediff = recipe.addsHediff;
-                if (addedHediff.countsAsAddedPartOrImplant) 
+                if (ResearchReinvented_SteppingStonesMod.Settings.surgeryPreregsMode == SurgeryPreregsMode.Easy)
                 {
-                    if (addedHediff.hediffClass == typeof(Hediff_AddedPart))
+                    recipe.researchPrerequisites.Add(ResearchProjectDefOf_Custom.DrugProduction);
+                }
+                else
+                {
+                    recipe.researchPrerequisites.Add(ResearchProjectDefOf_Custom.PenoxycylineProduction);
+                }
+            }
+            else if (recipe.workerClass.IsAssignableFrom(typeof(Recipe_InstallArtificialBodyPart)))
+            {
+                var props = recipe.addsHediff?.addedPartProps;
+                if (props == null)
+                    Log.Message($"RR.SS: recipe {recipe} has Recipe_InstallArtificialBodyPart as worker but does not define addedPartProps, skipping.");
+                
+
+                bool isExternal = recipe.appliedOnFixedBodyParts.Any(bp => GetRecordsOfBodyPartDef(bp).Any(r => r.depth == BodyPartDepth.Outside));
+
+                if (isExternal)
+                {
+                    if (props != null && (props.betterThanNatural || props.partEfficiency >= 1))
                     {
-                        var props = addedHediff.addedPartProps;
-                        if (props != null)
+                        if (ResearchReinvented_SteppingStonesMod.Settings.surgeryPreregsMode == SurgeryPreregsMode.Easy)
                         {
-                            var better = props.betterThanNatural;
-                            var efficiency = props.partEfficiency;
-                            Log.Message($"recipe {recipe} adds hediff {addedHediff}");
+                            recipe.researchPrerequisites.Add(ResearchProjectDefOf_Custom.ComplexClothing);
+                            recipe.researchPrerequisites.Add(ResearchProjectDefOf_Custom.RR_DomHerb);
+                        }
+                        else
+                        {
+                            recipe.researchPrerequisites.Add(ResearchProjectDefOf_Custom.Prosthetics);
+                            recipe.researchPrerequisites.Add(ResearchProjectDefOf_Custom.PenoxycylineProduction);
+                        }
+                    }
+                    else
+                    {
+                        if (ResearchReinvented_SteppingStonesMod.Settings.surgeryPreregsMode == SurgeryPreregsMode.Easy)
+                        {
+                            //recipe.researchPrerequisites.Add(ResearchProjectDefOf_Custom.RR_BasicApparel);
+                        }
+                        else
+                        {
+                            recipe.researchPrerequisites.Add(ResearchProjectDefOf_Custom.RR_PrimitiveClothing);
                         }
                     }
                 }
-            }*/
-            //recipe.researchPrerequisites.Add(ResearchProjectDefOf_Custom.RR_FundamentalSurgery);
+                else
+                {
+                    if (ResearchReinvented_SteppingStonesMod.Settings.surgeryPreregsMode == SurgeryPreregsMode.Easy)
+                    {
+                        recipe.researchPrerequisites.Add(ResearchProjectDefOf_Custom.DrugProduction);
+                    }
+                    else
+                    {
+                        recipe.researchPrerequisites.Add(ResearchProjectDefOf_Custom.PenoxycylineProduction);
+                    }
+                }
+            }
+            else if (recipe.workerClass.IsAssignableFrom(typeof(Recipe_InstallImplant)))
+            {
+                if (ResearchReinvented_SteppingStonesMod.Settings.surgeryPreregsMode == SurgeryPreregsMode.Easy)
+                {
+                    recipe.researchPrerequisites.Add(ResearchProjectDefOf_Custom.DrugProduction);
+                }
+                else
+                {
+                    recipe.researchPrerequisites.Add(ResearchProjectDefOf_Custom.PenoxycylineProduction);
+                }
+            }
         }
 
-        private static void GivePrerequisitesToFullBodySurgery(RecipeDef recipe) 
-        { 
-            if (recipe.researchPrerequisites == null)
-                recipe.researchPrerequisites = new List<ResearchProjectDef>();
+        /* private static void GivePrerequisitesToFullBodySurgery(RecipeDef recipe) 
+         { 
+             if (recipe.researchPrerequisites == null)
+                 recipe.researchPrerequisites = new List<ResearchProjectDef>();
 
-            var firstProjects = recipe.FindEarliestPrerequisiteProjects();
-            firstProjects = FilterOutSuperEarlyTechs(firstProjects);
-            if (firstProjects != null && firstProjects.Any())
+             var firstProjects = recipe.FindEarliestPrerequisiteProjects();
+             firstProjects = FilterOutSuperEarlyTechs(firstProjects);
+             if (firstProjects != null && firstProjects.Any())
+             {
+                 recipe.researchPrerequisites.AddRange(firstProjects);
+             }
+             //recipe.researchPrerequisites.Add(ResearchProjectDefOf_Custom.RR_FundamentalMedicine);
+         }*/
+
+        private static List<BodyPartRecord> GetRecordsOfBodyPartDef(BodyPartDef def)
+        {
+            if (!bodyPartRecordCache.ContainsKey(def))
             {
-                recipe.researchPrerequisites.AddRange(firstProjects);
+                List<BodyPartRecord> parts = new List<BodyPartRecord>();
+                foreach (var body in DefDatabase<BodyDef>.AllDefsListForReading)
+                {
+                    var matches = body.GetPartsWithDef(def);
+                    parts.AddRange(matches);
+                }
+                bodyPartRecordCache[def] = parts;
             }
-            //recipe.researchPrerequisites.Add(ResearchProjectDefOf_Custom.RR_FundamentalMedicine);
+            return bodyPartRecordCache[def];
         }
     }
 }

@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using HarmonyLib;
 using PeteTimesSix.ResearchReinvented_SteppingStones.DefOfs;
-using PeteTimesSix.ResearchReinvented_SteppingStones.Utility;
 using RimWorld;
 using Verse;
 
