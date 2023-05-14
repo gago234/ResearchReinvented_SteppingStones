@@ -77,7 +77,6 @@
 		<xpath>Defs/ResearchProjectDef[defName="ComplexFurniture"]</xpath>
 		<value>
 			<prerequisites>
-			  <li>RR_Doors</li>
 			  <li>RR_MethodicalResearch</li>
 			</prerequisites>
 		</value>

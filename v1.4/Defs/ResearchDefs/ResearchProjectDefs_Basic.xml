@@ -11,8 +11,8 @@
 	  <li>TribalStart</li>
       <li>ClassicStart</li>
     </tags>
-	  <researchViewX>-2.00</researchViewX>
-	  <researchViewY>4.05</researchViewY>
+		<researchViewX>-2.00</researchViewX>
+		<researchViewY>3.85</researchViewY>
   </ResearchProjectDef>
 
   <ResearchProjectDef>
@@ -26,12 +26,10 @@
     </tags>
     <prerequisites>
       <li>RR_Walls</li>
-	  <li>RR_BasicFurniture</li>
-	  <li>RR_Crafting</li>
     </prerequisites>
     <!-- <requiredResearchBuilding>SimpleResearchBench</requiredResearchBuilding> -->
-	<researchViewX>0.00</researchViewX>
-	<researchViewY>3.85</researchViewY>
+		<researchViewX>-1.00</researchViewX>
+		<researchViewY>3.85</researchViewY>
   </ResearchProjectDef>
 
   <ResearchProjectDef>
@@ -78,7 +76,7 @@
       <li>ClassicStart</li>
     </tags>
 		<researchViewX>-2.00</researchViewX>
-		<researchViewY>2.30</researchViewY>
+		<researchViewY>2.15</researchViewY>
   </ResearchProjectDef>
 
   <ResearchProjectDef>
@@ -94,7 +92,7 @@
       <li>RR_PrimitiveButchering</li>
     </prerequisites>
 		<researchViewX>0.00</researchViewX>
-		<researchViewY>2.30</researchViewY>
+		<researchViewY>2.15</researchViewY>
   </ResearchProjectDef>
 
   <ResearchProjectDef>
@@ -111,8 +109,8 @@
       <li>RR_PrimitiveButchering</li>
       <li>RR_Firemaking</li>
     </prerequisites>
-	  <researchViewX>-1.00</researchViewX>
-	  <researchViewY>2.95</researchViewY>
+		<researchViewX>-1.00</researchViewX>
+		<researchViewY>3.00</researchViewY>
   </ResearchProjectDef>
 
   <ResearchProjectDef>
@@ -128,8 +126,8 @@
       <li>RR_MethodicalResearch</li>
     </prerequisites>
     <!-- <requiredResearchBuilding>SimpleResearchBench</requiredResearchBuilding> -->
-      <researchViewX>1.00</researchViewX>
-      <researchViewY>2.00</researchViewY>
+		<researchViewX>1.00</researchViewX>
+		<researchViewY>3.55</researchViewY>
   </ResearchProjectDef>
 
   <ResearchProjectDef>
@@ -146,8 +144,8 @@
       <li>RR_PrimitiveCooking</li>
       <li>RR_BasicFurniture</li>
     </prerequisites>
-	  <researchViewX>0.00</researchViewX>
-	  <researchViewY>2.95</researchViewY>
+		<researchViewX>0.00</researchViewX>
+		<researchViewY>3.00</researchViewY>
   </ResearchProjectDef>
 
   <ResearchProjectDef>
@@ -164,8 +162,8 @@
       <li>RR_PrimitiveClothing</li>
     </prerequisites>
     <!-- <requiredResearchBuilding>SimpleResearchBench</requiredResearchBuilding> -->
-      <researchViewX>1.00</researchViewX>
-      <researchViewY>0.50</researchViewY>
+      <researchViewX>0.00</researchViewX>
+	  <researchViewY>0.50</researchViewY>
   </ResearchProjectDef>
 
 <!--Furniture-->
@@ -201,8 +199,8 @@
     <prerequisites>
       <li>RR_Crafting</li>
     </prerequisites>
-      <researchViewX>-1.00</researchViewX>
-      <researchViewY>3.85</researchViewY>
+		<researchViewX>-1.00</researchViewX>
+		<researchViewY>2.45</researchViewY>
   </ResearchProjectDef>
 
   <ResearchProjectDef>
@@ -251,8 +249,8 @@
 	<tags>
       <li>ClassicStart</li>
     </tags>
-	<researchViewX>0.00</researchViewX>
-	<researchViewY>4.85</researchViewY>
+		<researchViewX>0.00</researchViewX>
+		<researchViewY>4.85</researchViewY>
   </ResearchProjectDef>
 
   <ResearchProjectDef>
@@ -268,8 +266,8 @@
     <prerequisites>
       <li>RR_Crafting</li>
     </prerequisites>
-	  <researchViewX>-1.00</researchViewX>
-	  <researchViewY>1.00</researchViewY>
+		<researchViewX>-1.00</researchViewX>
+		<researchViewY>1.00</researchViewY>
   </ResearchProjectDef>
 
 <!--Miscellaneous-->
@@ -336,8 +334,8 @@
     <prerequisites>
       <li>RR_Crafting</li>
     </prerequisites>
-    <researchViewX>-1.00</researchViewX>
-	<researchViewY>2.00</researchViewY>
+		<researchViewX>-1.00</researchViewX>
+		<researchViewY>1.95</researchViewY>
   </ResearchProjectDef>
 
   <ResearchProjectDef>
@@ -352,8 +350,8 @@
     <prerequisites>
       <li>RR_BasicGames</li>
     </prerequisites>
-      <researchViewX>0.00</researchViewX>
-      <researchViewY>1.50</researchViewY>
+		<researchViewX>0.00</researchViewX>
+		<researchViewY>1.40</researchViewY>
   </ResearchProjectDef>
 
 <!--Temperature-->
@@ -368,8 +366,8 @@
 	  <li>TribalStart</li>
       <li>ClassicStart</li>
     </tags>
-	  <researchViewX>-2.00</researchViewX>
-	  <researchViewY>2.95</researchViewY>
+		<researchViewX>-2.00</researchViewX>
+		<researchViewY>3.00</researchViewY>
   </ResearchProjectDef>
 
 <!--Plants-->

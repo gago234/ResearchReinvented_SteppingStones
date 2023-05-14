@@ -25,7 +25,7 @@
 	<Operation Class="RR.PatchOperationReplaceResearchCoords">
 		<xpath>Defs/ResearchProjectDef[defName="PassiveCooler"]</xpath>
 			  <researchViewX>0.00</researchViewX>
-			  <researchViewY>4.85</researchViewY>
+			  <researchViewY>4.35</researchViewY>
 	</Operation>
 	<Operation Class="RR.PatchOperationReplaceResearchCoords">
 		<xpath>Defs/ResearchProjectDef[defName="Stonecutting"]</xpath>
@@ -44,21 +44,21 @@
 	</Operation>
 	<Operation Class="RR.PatchOperationReplaceResearchCoords">
 		<xpath>Defs/ResearchProjectDef[defName="CarpetMaking"]</xpath>
-		  <researchViewX>0.00</researchViewX>
-		  <researchViewY>1.00</researchViewY>
+			  <researchViewX>0.00</researchViewX>
+			  <researchViewY>1.00</researchViewY>
 	</Operation>
 	<Operation Class="PatchOperationConditional">
 		<xpath>Defs/ResearchProjectDef[defName="ComplexFurniture"]/tab</xpath>
 			<nomatch Class="RR.PatchOperationReplaceResearchCoords">
 			<xpath>Defs/ResearchProjectDef[defName="ComplexFurniture"]</xpath>
-				<researchViewX>1.00</researchViewX>
-				<researchViewY>3.85</researchViewY>
+				  <researchViewX>1.00</researchViewX>
+				  <researchViewY>2.45</researchViewY>
 			</nomatch>
 	</Operation>
 	<Operation Class="RR.PatchOperationReplaceResearchCoords">
 		<xpath>Defs/ResearchProjectDef[defName="Pemmican"]</xpath>
-		  <researchViewX>0.00</researchViewX>
-		  <researchViewY>4.35</researchViewY>
+			  <researchViewX>0.00</researchViewX>
+			  <researchViewY>3.55</researchViewY>
 	</Operation>
 	<Operation Class="PatchOperationConditional">
 		<xpath>Defs/ResearchProjectDef[defName="RecurveBow"]/tab</xpath>
@@ -259,8 +259,8 @@
 	</Operation>
 	<Operation Class="RR.PatchOperationReplaceResearchCoords">
 		<xpath>Defs/ResearchProjectDef[defName="Smithing"]</xpath>
-		<researchViewX>1.00</researchViewX>
-		<researchViewY>2.95</researchViewY>
+			  <researchViewX>1.00</researchViewX>
+			  <researchViewY>3.00</researchViewY>
 	</Operation>
 	<Operation Class="RR.PatchOperationReplaceResearchCoords">
 		<xpath>Defs/ResearchProjectDef[defName="Gunsmithing"]</xpath>
