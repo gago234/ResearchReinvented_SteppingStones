@@ -80,14 +80,33 @@
 		<xpath>Defs/ResearchProjectDef[defName="NobleApparel"]</xpath>
 		<doesRequire>ludeon.rimworld.royalty</doesRequire>
 				<researchViewX>3.00</researchViewX>
-				<researchViewY>1.20</researchViewY>
+				<researchViewY>0.50</researchViewY>
 	</Operation>
 	<Operation Class="RR.PatchOperationReplaceResearchCoords">
 		<xpath>Defs/ResearchProjectDef[defName="RoyalApparel"]</xpath>
 		<doesRequire>ludeon.rimworld.royalty</doesRequire>
 				<researchViewX>4.00</researchViewX>
-				<researchViewY>1.20</researchViewY>
+				<researchViewY>0.50</researchViewY>
 	</Operation>
+	<Operation Class="RR.PatchOperationReplaceResearchCoords">
+		<doesRequire>oskarpotocki.vfe.empire</doesRequire>
+		<xpath>Defs/ResearchProjectDef[defName="VFEE_NobleDecorations"]</xpath>
+				<researchViewX>2.00</researchViewX>
+				<researchViewY>5.00</researchViewY>
+	</Operation>
+	<Operation Class="RR.PatchOperationReplaceResearchCoords">
+		<doesRequire>oskarpotocki.vfe.empire</doesRequire>
+		<xpath>Defs/ResearchProjectDef[defName="VFEE_StellicThrone"]</xpath>
+				<researchViewX>3.00</researchViewX>
+				<researchViewY>5.00</researchViewY>
+	</Operation>
+	<Operation Class="RR.PatchOperationReplaceResearchCoords">
+		<doesRequire>rainbeausfishing.reworkmod</doesRequire>
+		<xpath>Defs/ResearchProjectDef[defName="RFF_MakeSeafood"]</xpath>
+				<researchViewX>2.00</researchViewX>
+				<researchViewY>2.00</researchViewY>
+	</Operation>
+	
 	<Operation Class="PatchOperationConditional">
 		<xpath>Defs/ResearchProjectDef[defName="PlateArmor"]/tab</xpath>
 			<nomatch Class="RR.PatchOperationReplaceResearchCoords">
@@ -643,14 +662,14 @@
 	<Operation Class="RR.PatchOperationReplaceResearchCoords">
 		<doesRequire>xrushha.animagear</doesRequire>
 		<xpath>Defs/ResearchProjectDef[defName="DomesticationAnimaGrass"]</xpath>
-		<researchViewX>1.00</researchViewX>
-		<researchViewY>4.60</researchViewY>
+				<researchViewX>0.00</researchViewX>
+				<researchViewY>0.95</researchViewY>
 	</Operation>
 	<Operation Class="RR.PatchOperationReplaceResearchCoords">
 		<doesRequire>xrushha.eldersfaction</doesRequire>
 		<xpath>Defs/ResearchProjectDef[defName="AnimaDrugs"]</xpath>
 		<researchViewX>1.00</researchViewX>
-		<researchViewY>4.15</researchViewY>
+		<researchViewY>5.85</researchViewY>
 	</Operation>
 	<Operation Class="RR.PatchOperationReplaceResearchCoords">
 		<doesRequire>rooboid.paintings.ex</doesRequire>
@@ -664,6 +683,12 @@
 		<researchViewX>1.00</researchViewX>
 		<researchViewY>-0.15</researchViewY>
 	</Operation>
+	<Operation Class="RR.PatchOperationReplaceResearchCoords">
+		<doesRequire>notfood.justrecycle</doesRequire>
+		<xpath>Defs/ResearchProjectDef[defName="JR_PrimitiveMending"]</xpath>
+		<researchViewX>3.00</researchViewX>
+		<researchViewY>2.00</researchViewY>
+	</Operation>
 	<Operation Class="PatchOperationConditional">
 				<xpath>Defs/ResearchProjectDef[defName="Glassworks"]</xpath>
 				<match Class="RR.PatchOperationReplaceResearchCoords">
@@ -674,10 +699,10 @@
 				</match>
 	</Operation>
 	<Operation Class="RR.PatchOperationReplaceResearchCoords">
-		<doesRequire>argon.tribalmed</doesRequire>
-		<xpath>Defs/ResearchProjectDef[defName="TM_TribalMedicalHerbs"]</xpath>
-		<researchViewX>0.00</researchViewX>
-		<researchViewY>3.85</researchViewY>
+		<doesRequire>argon.tribalmedicineremake</doesRequire>
+		<xpath>Defs/ResearchProjectDef[defName="TM_AncientTribalMedicine"]</xpath>
+				<researchViewX>-2.00</researchViewX>
+				<researchViewY>6.25</researchViewY>
 	</Operation>
 	<Operation Class="PatchOperationFindMod">
 		<mods>

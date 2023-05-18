@@ -382,8 +382,8 @@
 	  <li>TribalStart</li>
       <li>ClassicStart</li>
     </tags>
-    <researchViewX>-2.00</researchViewX>
-    <researchViewY>5.85</researchViewY>
+	<researchViewX>-2.00</researchViewX>
+	<researchViewY>5.55</researchViewY>
   </ResearchProjectDef>
 
   <ResearchProjectDef>
@@ -501,7 +501,7 @@
     <baseCost>375</baseCost>
     <techLevel>Industrial</techLevel>
       <researchViewX>3.00</researchViewX>
-      <researchViewY>0.50</researchViewY>
+	  <researchViewY>-0.15</researchViewY>
     <tags>
       <li>ClassicStart</li>
     </tags>

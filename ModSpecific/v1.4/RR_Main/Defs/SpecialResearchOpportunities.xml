@@ -1,29 +1,10 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Defs>  
-	<PeteTimesSix.ResearchReinvented.Defs.SpecialResearchOpportunityDef ParentName="SpecialResearchOpportunityBase">
-		<defName>RR_SS_organization_man</defName>
-		<opportunityType>Analyse</opportunityType>
-		<originalProject>RR_Organization</originalProject>
-		<alternates>
-			<li>Human</li>
-		</alternates>
-	</PeteTimesSix.ResearchReinvented.Defs.SpecialResearchOpportunityDef>
-	
-	<PeteTimesSix.ResearchReinvented.Defs.SpecialResearchOpportunityDef ParentName="SpecialResearchOpportunityBase">
-<defName>RR_SS_organization_dirt</defName>	
-		<opportunityType>AnalyseTerrain</opportunityType>
-		<originalProject>RR_Organization</originalProject>
-		<alternateTerrains>
-			<li>Soil</li>
-			<li>Sand</li>
-			<li>Ice</li>
-		</alternateTerrains>
-	</PeteTimesSix.ResearchReinvented.Defs.SpecialResearchOpportunityDef>
 	
 	<PeteTimesSix.ResearchReinvented.Defs.SpecialResearchOpportunityDef ParentName="SpecialResearchOpportunityBase">
 		<defName>RR_LateralThinking_man</defName>
 		<opportunityType>Analyse</opportunityType>
-		<originalProject>RR_PrimitiveRangedWeapons</originalProject>
+		<originalProject>RR_PrimitiveMeleeWeapons</originalProject>
 		<alternates>
 			<li>Human</li>
 		</alternates>
@@ -32,7 +13,7 @@
 	<PeteTimesSix.ResearchReinvented.Defs.SpecialResearchOpportunityDef ParentName="SpecialResearchOpportunityBase">
 		<defName>RR_LateralThinking_dirt</defName>
 		<opportunityType>AnalyseTerrain</opportunityType>
-		<originalProject>RR_PrimitiveRangedWeapons</originalProject>
+		<originalProject>RR_PrimitiveMeleeWeapons</originalProject>
 		<alternateTerrains>
 			<li>Soil</li>
 			<li>Sand</li>
@@ -65,7 +46,7 @@
 	<PeteTimesSix.ResearchReinvented.Defs.SpecialResearchOpportunityDef ParentName="SpecialResearchOpportunityBase">
 		<defName>RR_SS_melee</defName>
 		<opportunityType>Analyse</opportunityType>
-		<originalProject>RR_PrimitiveMeleeWeapons</originalProject>
+		<originalProject>RR_PrimitiveRangedWeapons</originalProject>
 		<alternates>
 			<li>WoodLog</li>
 		</alternates>

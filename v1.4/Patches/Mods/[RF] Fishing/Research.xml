@@ -25,6 +25,8 @@
 							<prerequisites>
 								<li>RR_PrimitiveMeleeWeapons</li>
 							</prerequisites>
+							<researchViewX>0.00</researchViewX>
+							<researchViewY>0.50</researchViewY>
 						</ResearchProjectDef>
 					</value>
 				</li>
@@ -42,6 +44,8 @@
 								<li>RR_BasicTraps</li>
 								<li>RR_RFF_Fishing</li>
 							</prerequisites>
+							<researchViewX>1.00</researchViewX>
+							<researchViewY>1.00</researchViewY>
 						</ResearchProjectDef>
 					</value>
 				</li>
