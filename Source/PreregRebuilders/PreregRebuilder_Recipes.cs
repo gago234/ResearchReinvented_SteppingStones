@@ -146,14 +146,15 @@ namespace PeteTimesSix.ResearchReinvented_SteppingStones.PreregRebuilders
             {
                 var props = recipe.addsHediff?.addedPartProps;
                 if (props == null)
+                {
                     Log.Message($"RR.SS: recipe {recipe} has Recipe_InstallArtificialBodyPart as worker but does not define addedPartProps, skipping.");
-                
+                    return;
+                }
 
                 bool isExternal = recipe.appliedOnFixedBodyParts.Any(bp => GetRecordsOfBodyPartDef(bp).Any(r => r.depth == BodyPartDepth.Outside));
-
                 if (isExternal)
                 {
-                    if (props != null && (props.betterThanNatural || props.partEfficiency >= 1))
+                    if (props.betterThanNatural || props.partEfficiency >= 1)
                     {
                         if (ResearchReinvented_SteppingStonesMod.Settings.surgeryPreregsMode == SurgeryPreregsMode.Easy)
                         {
