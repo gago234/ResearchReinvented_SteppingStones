@@ -16,7 +16,7 @@
 		</match>
 	</Operation>
 
-	<Operation Class="PatchOperationFindMod">
+<!-- 	<Operation Class="PatchOperationFindMod">
 			<mods>
 				<li>[JPT] Open The Windows</li>
 			</mods>
@@ -29,7 +29,7 @@
 				</value>
 			</match>
 	</Operation>
-
+ -->
 	<Operation Class="PatchOperationFindMod">
 			<mods>
 				<li>[JPT] Soft Warm Beds</li>

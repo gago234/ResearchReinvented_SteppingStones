@@ -74,16 +74,16 @@ namespace PeteTimesSix.ResearchReinvented_SteppingStones.PreregRebuilders
             {                
                 if (terrain.CostList.Any(t => t.thingDef?.stuffProps?.categories != null))
                 {
-                    if (terrain.CostList.Any(t => t.thingDef.stuffProps.categories.Contains(StuffCategoryDefOf.Metallic)))
+                    if (terrain.CostList.Any(t => t.thingDef.stuffProps.categories.Where(c => c == StuffCategoryDefOf.Metallic) != null))
                     {
                         terrain.researchPrerequisites.Add(ResearchProjectDef.Named("Smithing"));
                     }
-                    else if (terrain.CostList.Any(t => t.thingDef.stuffProps.categories.Contains(StuffCategoryDefOf.Stony)))
+                    else if (terrain.CostList.Any(t => t.thingDef.stuffProps.categories.Where(c => c == StuffCategoryDefOf.Stony) != null))
                     {
                         terrain.researchPrerequisites.Add(ResearchProjectDef.Named("Stonecutting"));
                     }
-                    else if (terrain.CostList.Any(t => t.thingDef.stuffProps.categories.Contains(StuffCategoryDefOf.Fabric)  ||
-                                                       t.thingDef.stuffProps.categories.Contains(StuffCategoryDefOf.Leathery)))
+                    else if (terrain.CostList.Any(t => t.thingDef.stuffProps.categories.Where(c => c == StuffCategoryDefOf.Fabric) != null ||
+                                                       t.thingDef.stuffProps.categories.Where(c => c == StuffCategoryDefOf.Leathery) != null))
                     {
                         terrain.researchPrerequisites.Add(ResearchProjectDefOf_Custom.RR_Tailoring);
                     }
@@ -96,13 +96,13 @@ namespace PeteTimesSix.ResearchReinvented_SteppingStones.PreregRebuilders
         {
             if (terrain.tags != null && !terrain.tags.Any(t => t == "Ship" || t == "Space"))
             {
-                if (terrain.CostList.Any(t => t.thingDef?.stuffProps?.categories != null && t.thingDef.stuffProps.categories.Contains(StuffCategoryDefOf.Stony)))
+                if (terrain.CostList.Any(t => t.thingDef?.stuffProps?.categories?.Where(c => c == StuffCategoryDefOf.Stony) != null))
                 {
                     if (!terrain.researchPrerequisites.Contains(ResearchProjectDef.Named("Stonecutting")))
                         terrain.researchPrerequisites.Add(ResearchProjectDef.Named("Stonecutting"));
                     terrain.researchPrerequisites.Add(ResearchProjectDefOf_Custom.RR_IndoorFlooring);
                 }
-                else if (terrain.CostList.Any(t => t.thingDef?.stuffProps?.categories != null && t.thingDef.stuffProps.categories.Contains(StuffCategoryDefOf.Metallic)))
+                else if (terrain.CostList.Any(t => t.thingDef?.stuffProps?.categories?.Where(c => c == StuffCategoryDefOf.Metallic) != null))
                 {
                     if (terrain.researchPrerequisites.Contains(ResearchProjectDef.Named("Stonecutting")))
                     {                    
