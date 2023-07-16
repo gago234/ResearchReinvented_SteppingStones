@@ -1,4 +1,4 @@
-﻿using PeteTimesSix.ResearchReinvented_SteppingStones.DefOfs;
+using PeteTimesSix.ResearchReinvented_SteppingStones.DefOfs;
 using PeteTimesSix.ResearchReinvented_SteppingStones.Extensions;
 using RimWorld;
 using System;
@@ -19,23 +19,36 @@ namespace PeteTimesSix.ResearchReinvented_SteppingStones.PreregRebuilders
             var noProjectRecipeDefs = new HashSet<RecipeDef>();
             var noProjectSurgeryRecipeDefs = new HashSet<RecipeDef>();
             var noProjectFullBodySurgeryRecipeDefs = new HashSet<RecipeDef>();
+            var indeterminateSurgeries = new HashSet<RecipeDef>();
             foreach (var recipeDef in DefDatabase<RecipeDef>.AllDefsListForReading.Where(r => r.NoResearchPrerequisites()))
             {
                 if (recipeDef.IsSurgery)
                 {
-                    if (recipeDef.targetsBodyPart)
+                    if(recipeDef.IsDefinitelyASurgery())
                     {
-                        noProjectSurgeryRecipeDefs.Add(recipeDef);
+                        if (recipeDef.targetsBodyPart)
+                        {
+                            noProjectSurgeryRecipeDefs.Add(recipeDef);
+                        }
+                        else
+                        {
+                            noProjectFullBodySurgeryRecipeDefs.Add(recipeDef);
+                        }
                     }
                     else
                     {
-                        noProjectFullBodySurgeryRecipeDefs.Add(recipeDef);
+                        indeterminateSurgeries.Add(recipeDef);
                     }
                 }
                 else
                 {
                     noProjectRecipeDefs.Add(recipeDef);
                 }
+            }
+
+            if (indeterminateSurgeries.Any()) 
+            {
+                Log.Warning($"RR.SS: Detected recipe(s) that both are and arent surgeries: {string.Join(",", indeterminateSurgeries)} - this is usually the result of invalid animal prosthetic patches.");
             }
 
             foreach (var recipe in noProjectRecipeDefs)

@@ -3,7 +3,7 @@
 	
 	<PeteTimesSix.ResearchReinvented.Defs.SpecialResearchOpportunityDef ParentName="SpecialResearchOpportunityBase">
 		<defName>RR_LateralThinking_man</defName>
-		<opportunityType>Analyse</opportunityType>
+		<opportunityType>AnalysePawn</opportunityType>
 		<originalProject>RR_PrimitiveMeleeWeapons</originalProject>
 		<alternates>
 			<li>Human</li>

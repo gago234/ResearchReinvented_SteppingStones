@@ -77,11 +77,14 @@ namespace PeteTimesSix.ResearchReinvented_SteppingStones.PreregRebuilders
                 if (buildable.IsButcherer())
                     buildable.researchPrerequisites.Add(ResearchProjectDefOf_Custom.RR_Butchering);
                 else
-                { 
-                    buildable.researchPrerequisites.Add(ResearchProjectDefOf_Custom.RR_Crafting);
-                    if (buildable.IsMadeFromStuff())
-                        buildable.researchPrerequisites.Add(ResearchProjectDefOf_Custom.RR_BasicFurniture);
-                }
+                {
+                    if (buildable.defName != "ResearchSampleBench")  //avoid hard lockout with Research Data
+                    {                   
+                        buildable.researchPrerequisites.Add(ResearchProjectDefOf_Custom.RR_Crafting);
+                        if (buildable.IsMadeFromStuff())
+                            buildable.researchPrerequisites.Add(ResearchProjectDefOf_Custom.RR_BasicFurniture);
+                    }
+                }                  
             }
             else if (buildable.IsIdeological())
             {

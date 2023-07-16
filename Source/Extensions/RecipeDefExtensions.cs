@@ -1,4 +1,4 @@
-﻿using HarmonyLib;
+using HarmonyLib;
 using RimWorld;
 using System;
 using System.Collections.Generic;
@@ -12,6 +12,23 @@ namespace PeteTimesSix.ResearchReinvented_SteppingStones.Extensions
 {
     public static class RecipeDefExtensions
 	{
+		public static bool IsDefinitelyASurgery(this RecipeDef recipeDef) 
+		{
+			bool isSurgery = false;
+			foreach (var recipeUser in recipeDef.AllRecipeUsers)
+			{
+				if (recipeUser.category == ThingCategory.Pawn)
+				{
+					isSurgery = true;
+				}
+				else 
+				{
+					return false;
+				}
+			}
+			return isSurgery;
+		}
+
 		public static bool NoResearchPrerequisites(this RecipeDef recipe)
 		{
 			if (recipe.researchPrerequisite == null) 
