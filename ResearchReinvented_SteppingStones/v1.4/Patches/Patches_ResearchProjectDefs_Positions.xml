@@ -23,6 +23,11 @@
 			</nomatch>
 	</Operation>
 	<Operation Class="RR.PatchOperationReplaceResearchCoords">
+		<xpath>Defs/ResearchProjectDef[defName="Brewing"]</xpath>
+		<researchViewX>1.00</researchViewX>
+		<researchViewY>1.50</researchViewY>
+	</Operation>
+	<Operation Class="RR.PatchOperationReplaceResearchCoords">
 		<xpath>Defs/ResearchProjectDef[defName="PassiveCooler"]</xpath>
 			  <researchViewX>0.00</researchViewX>
 			  <researchViewY>4.35</researchViewY>

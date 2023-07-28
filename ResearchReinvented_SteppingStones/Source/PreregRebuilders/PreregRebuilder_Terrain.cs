@@ -1,4 +1,4 @@
-﻿using PeteTimesSix.ResearchReinvented_SteppingStones.DefOfs;
+using PeteTimesSix.ResearchReinvented_SteppingStones.DefOfs;
 using RimWorld;
 using System;
 using System.Collections.Generic;

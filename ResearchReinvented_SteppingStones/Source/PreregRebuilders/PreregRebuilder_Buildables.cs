@@ -70,6 +70,9 @@ namespace PeteTimesSix.ResearchReinvented_SteppingStones.PreregRebuilders
             if (buildable.researchPrerequisites == null)
                 buildable.researchPrerequisites = new List<ResearchProjectDef>();
 
+            if (buildable.defName == "ResearchSampleBench") //avoid hard lockout with Research Data
+                return;
+
             if (ResearchReinvented_SteppingStonesMod.Settings.doPowerPreregs && buildable.IsElectrical())
                 buildable.researchPrerequisites.Add(ResearchProjectDef.Named("Electricity"));
             else if (buildable.IsCraftingFacility())
