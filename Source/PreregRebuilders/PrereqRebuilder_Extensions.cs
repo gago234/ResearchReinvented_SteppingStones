@@ -60,11 +60,6 @@ namespace PeteTimesSix.ResearchReinvented_SteppingStones.PreregRebuilders
             return buildable.stuffCategories != null && buildable.stuffCategories.Contains(StuffCategoryDefOf.Fabric);
         }
 
-        private static bool IsFireBased(this ThingDef buildable)
-        {
-            return  (buildable.HasComp(typeof(CompFireOverlay)) || buildable.HasComp(typeof(CompDarklightOverlay))) ||
-                    (buildable.HasComp(typeof(CompMeditationFocus)) && buildable.GetCompProperties<CompProperties_MeditationFocus>().focusTypes.Contains(MeditationFocusDefOf_Custom.Flame));
-        }
 
         private static bool IsFurniture(this ThingDef buildable)
         {
@@ -102,8 +97,13 @@ namespace PeteTimesSix.ResearchReinvented_SteppingStones.PreregRebuilders
                 buildable.stuffCategories.Contains(StuffCategoryDefOf.Leathery));
         }
 
+        /*private static bool IsFireBased(this ThingDef buildable)
+        {
+            return  (buildable.HasComp(typeof(CompFireOverlay)) || buildable.HasComp(typeof(CompDarklightOverlay))) ||
+                    (buildable.HasComp(typeof(CompMeditationFocus)) && buildable.GetCompProperties<CompProperties_MeditationFocus>().focusTypes.Contains(MeditationFocusDefOf_Custom.Flame));
+        }
 
-        private static bool IsWall(this ThingDef buildable)
+        private static bool IsAlsoWall(this ThingDef buildable)
         {
             return buildable == ThingDefOf.Wall ||
                 (
@@ -115,7 +115,7 @@ namespace PeteTimesSix.ResearchReinvented_SteppingStones.PreregRebuilders
                     buildable.passability == Traversability.Impassable &&
                     buildable.size == IntVec2.One
                 );
-        }
+        }*/
 
         private static bool IsElectrical(this ThingDef buildable)
         {
